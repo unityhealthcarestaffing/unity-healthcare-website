@@ -1,804 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Unity Healthcare Staffing Ltd | Healthcare Staffing in Wales</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Unity Healthcare Staffing Ltd supplies reliable, compassionate care and nursing staff to care homes, supported living, hospitals and community services across Wales." />
-  <style>
-    :root {
-      --primary: #0b4f6c;
-      --primary-light: #e6f4f9;
-      --accent: #1ea896;
-      --dark: #102a43;
-      --text: #334e68;
-      --bg: #f5f7fb;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    header {
-      background: white;
-      border-bottom: 1px solid #e1e7f0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-      gap: 1rem;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .brand-logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 2px solid var(--primary-light);
-    }
-
-    .brand-text {
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      opacity: 0.8;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: var(--primary);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.65rem 1.3rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(11, 79, 108, 0.22);
-    }
-
-    .btn-primary:hover {
-      background: #093b50;
-      transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(11, 79, 108, 0.28);
-    }
-
-    .btn-outline {
-      background: white;
-      border: 1px solid #cbd2e1;
-      color: var(--primary);
-    }
-
-    .btn-outline:hover {
-      background: var(--primary-light);
-    }
-
-    /* HERO */
-
-    .hero {
-      padding: 2.75rem 0 2rem;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      background: #ecf7f5;
-      color: var(--accent);
-      font-size: 0.8rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 3.4vw, 2.8rem);
-      font-weight: 750;
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-title span {
-      color: var(--primary);
-    }
-
-    .hero-text {
-      font-size: 0.98rem;
-      max-width: 540px;
-      margin-bottom: 1.25rem;
-      color: #526581;
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      font-size: 0.78rem;
-      color: #7a8ba3;
-    }
-
-    .hero-card {
-      background: white;
-      border-radius: 1.25rem;
-      padding: 1.25rem 1.1rem;
-      box-shadow: 0 14px 38px rgba(15, 35, 52, 0.09);
-      border: 1px solid #e5ebf4;
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-    }
-
-    .hero-stat {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .hero-stat span:last-child {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    /* Sections */
-
-    section {
-      padding: 2.5rem 0;
-    }
-
-    section:nth-of-type(odd) {
-      background: white;
-    }
-
-    .section-header {
-      margin-bottom: 1.25rem;
-      text-align: left;
-    }
-
-    .section-kicker {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-    }
-
-    .section-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 0.25rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: #6b7b93;
-      max-width: 640px;
-    }
-
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .card {
-      background: white;
-      border-radius: 1.2rem;
-      padding: 1rem;
-      border: 1px solid #e3e9f3;
-      box-shadow: 0 6px 18px rgba(15, 35, 52, 0.06);
-      font-size: 0.9rem;
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      font-weight: 650;
-      margin-bottom: 0.4rem;
-      color: var(--dark);
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.65rem;
-      border-radius: 999px;
-      background: var(--primary-light);
-      color: var(--primary);
-      margin-bottom: 0.35rem;
-    }
-
-    .list {
-      list-style: none;
-      margin-top: 0.35rem;
-      font-size: 0.85rem;
-    }
-
-    .list li::before {
-      content: "• ";
-      color: var(--accent);
-    }
-
-    /* Process */
-
-    .steps {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 0.5rem;
-    }
-
-    .step-number {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: var(--primary-light);
-      color: var(--primary);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    /* Contact */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    form {
-      background: white;
-      border-radius: 1.2rem;
-      padding: 1.1rem;
-      border: 1px solid #e3e9f3;
-      box-shadow: 0 10px 26px rgba(15, 35, 52, 0.08);
-      font-size: 0.9rem;
-    }
-
-    .field {
-      margin-bottom: 0.75rem;
-    }
-
-    label {
-      display: block;
-      font-size: 0.78rem;
-      margin-bottom: 0.3rem;
-      color: #627089;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 0.55rem 0.65rem;
-      border-radius: 0.65rem;
-      border: 1px solid #ccd4e4;
-      font: inherit;
-      background: #f9fbff;
-    }
-
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      outline: 2px solid rgba(11, 79, 108, 0.28);
-      border-color: var(--primary);
-      background: #fff;
-    }
-
-    .contact-card {
-      font-size: 0.9rem;
-    }
-
-    .contact-line {
-      margin-bottom: 0.4rem;
-    }
-
-    .contact-label {
-      font-weight: 600;
-      color: var(--dark);
-    }
-
-    /* Footer */
-
-    footer {
-      border-top: 1px solid #dde3f0;
-      background: white;
-      padding: 0.9rem 0;
-      font-size: 0.8rem;
-      color: #78839a;
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 800px) {
-      .hero-inner,
-      .grid-3,
-      .grid-2,
-      .steps,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
+<script type="module">
+  // Your Firebase config (use exactly as provided)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBe6amsLWa7o-Hp2Zwvn0dpjxfQ9ldbUUU",
+    authDomain: "unity-healthcare-staffing.firebaseapp.com",
+    projectId: "unity-healthcare-staffing",
+    storageBucket: "unity-healthcare-staffing.firebasestorage.app",
+    messagingSenderId: "559193698848",
+    appId: "1:559193698848:web:8426c72a1749d0c7770245",
+    measurementId: "G-J5L3RT870C"
+  };
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // -------------------------------
+  // CLIENT ENQUIRY FORM
+  // -------------------------------
+
+  const clientForm = document.getElementById("clientForm");
+  const clientFormMessage = document.getElementById("clientFormMessage");
+
+  if (clientForm) {
+    clientForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      clientFormMessage.textContent = "";
+      clientFormMessage.className = "form-message";
+
+      const formData = new FormData(clientForm);
+
+      const payload = {
+        who: formData.get("type"),
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        serviceName: formData.get("serviceName"),
+        message: formData.get("message"),
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        await addDoc(collection(db, "enquiries"), payload);
+        clientForm.reset();
+        clientFormMessage.textContent =
+          "Thank you – your enquiry has been received. We will contact you shortly.";
+        clientFormMessage.classList.add("success");
+      } catch (error) {
+        console.error("Error saving enquiry:", error);
+        clientFormMessage.textContent =
+          "Sorry, something went wrong. Please try again or email us directly.";
+        clientFormMessage.classList.add("error");
       }
+    });
+  }
 
-      .nav-links {
-        display: none;
+  // -------------------------------
+  // STAFF REGISTRATION FORM
+  // -------------------------------
+
+  const staffForm = document.getElementById("staffForm");
+  const staffFormMessage = document.getElementById("staffFormMessage");
+
+  if (staffForm) {
+    staffForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      staffFormMessage.textContent = "";
+      staffFormMessage.className = "form-message";
+
+      const formData = new FormData(staffForm);
+
+      const payload = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        role: formData.get("role"),
+        experienceYears: formData.get("experienceYears"),
+        settings: formData.get("settings"),
+        dbsStatus: formData.get("dbsStatus"),
+        availability: formData.get("availability"),
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        await addDoc(collection(db, "staffApplications"), payload);
+        staffForm.reset();
+        staffFormMessage.textContent =
+          "Thank you – your registration has been received. We will contact you if your profile matches our current opportunities.";
+        staffFormMessage.classList.add("success");
+      } catch (error) {
+        console.error("Error saving staff application:", error);
+        staffFormMessage.textContent =
+          "Sorry, something went wrong. Please try again or email us directly.";
+        staffFormMessage.classList.add("error");
       }
+    });
+  }
 
-      .hero {
-        padding-top: 1.75rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <div class="container nav">
-    <div class="nav-left">
-      <div class="brand-logo">
-        <!-- Uses assets/logo.png -->
-        <img src="assets/logo.png" alt="Unity Healthcare Staffing Logo">
-      </div>
-      <div class="brand-text">Unity Healthcare Staffing Ltd</div>
-    </div>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#sectors">Who We Serve</a>
-      <a href="#professionals">For Staff</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-outline">Client Portal</a>
-    </nav>
-    <a href="#contact" class="btn btn-primary">Book Staff</a>
-  </div>
-</header>
-
-<main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div>
-        <div class="hero-badge">Healthcare staffing for Wales</div>
-        <h1 class="hero-title">
-          Reliable <span>care & nursing staff</span> when you need them most.
-        </h1>
-        <p class="hero-text">
-          Unity Healthcare Staffing Ltd supplies carefully vetted, compassionate healthcare workers
-          and nurses to care homes, supported living services, hospitals and community providers
-          across Wales – with a focus on quality, reliability and dignity in care.
-        </p>
-        <div class="hero-cta">
-          <a href="https://forms.gle/xBCAttAkVvT5U8iF8" target="_blank" class="btn btn-primary">
-  Request staff today
-</a>
-
-          <a href="#professionals" class="btn btn-outline">Join our staff bank</a>
-        </div>
-        <div class="hero-meta">
-          <span>Based in Bangor, serving Wales</span>
-          <span>Care & support staff · Nurses</span>
-          <span>Branded uniforms & compliance-focused</span>
-        </div>
-      </div>
-      <aside class="hero-card">
-        <div class="hero-card-title">At a glance</div>
-        <div class="hero-stat">
-          <span>Service types</span>
-          <span>Care, support, nursing</span>
-        </div>
-        <div class="hero-stat">
-          <span>Settings</span>
-          <span>Care homes · Supported living · Hospitals</span>
-        </div>
-        <div class="hero-stat">
-          <span>Coverage</span>
-          <span>North & wider Wales</span>
-        </div>
-        <div class="hero-stat">
-          <span>Company number</span>
-          <span>16863419</span>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Who we are</div>
-        <h2 class="section-title">A values-led healthcare staffing partner in Wales</h2>
-        <p class="section-subtitle">
-          Unity Healthcare Staffing Ltd is led by an experienced healthcare worker and chartered
-          management professional, combining frontline care experience with strong governance,
-          financial oversight and a genuine passion for quality.
-        </p>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Our mission</h3>
-          <p>
-            To support health and social care providers with reliable, well-presented and
-            well-supported staff, so that residents, patients and service users receive safe,
-            compassionate and consistent care – every shift.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Our values</h3>
-          <ul class="list">
-            <li><b>Integrity</b> – transparent, honest and accountable in all we do.</li>
-            <li><b>Compassion</b> – treating every person with dignity and respect.</li>
-            <li><b>Excellence</b> – high standards in recruitment, training and performance.</li>
-            <li><b>Unity</b> – working in partnership with providers, staff and communities.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">What we do</div>
-        <h2 class="section-title">Staffing solutions tailored to your service</h2>
-        <p class="section-subtitle">
-          Whether you need last-minute cover, longer-term placements or regular agency support,
-          we match you with staff who understand your service and your standards.
-        </p>
-      </div>
-
-      <div class="grid grid-3">
-        <div class="card">
-          <span class="pill">Care & Support Staff</span>
-          <h3>Healthcare Assistants & Support Workers</h3>
-          <p>
-            Compassionate, experienced staff to support with personal care, daily living,
-            social inclusion and wellbeing in residential and community settings.
-          </p>
-          <ul class="list">
-            <li>Care homes & nursing homes</li>
-            <li>Supported living & mental health services</li>
-            <li>Homelessness and community support projects</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="pill">Nursing</span>
-          <h3>Registered Nurses</h3>
-          <p>
-            Qualified nurses for temporary cover, nights, weekends or ongoing block bookings
-            to support safe staffing levels and continuity of clinical care.
-          </p>
-          <ul class="list">
-            <li>NMC-registered professionals</li>
-            <li>Day, night and weekend cover</li>
-            <li>Flexible, needs-based deployment</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="pill">Uniforms & Presentation</span>
-          <h3>Branded uniforms & workwear</h3>
-          <p>
-            Unity-branded uniforms supplied to our staff to support professional presentation,
-            service identity and infection control standards.
-          </p>
-          <ul class="list">
-            <li>Consistent, professional image</li>
-            <li>Clear staff identification</li>
-            <li>Reassurance for residents & families</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTORS -->
-  <section id="sectors">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Who we serve</div>
-        <h2 class="section-title">Support across health & social care settings</h2>
-        <p class="section-subtitle">
-          Unity Healthcare Staffing Ltd works with a range of providers across Wales, building
-          long-term partnerships based on trust, communication and consistent quality.
-        </p>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Care & Nursing Homes</h3>
-          <ul class="list">
-            <li>Older persons’ residential and nursing care</li>
-            <li>Dementia and complex needs</li>
-            <li>Reablement and step-down support</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Supported Living & Community Services</h3>
-          <ul class="list">
-            <li>Learning disabilities and autism services</li>
-            <li>Mental health and recovery pathways</li>
-            <li>Homelessness and community support projects</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">How it works</div>
-        <h2 class="section-title">Simple, clear and compliant process</h2>
-        <p class="section-subtitle">
-          We keep things straightforward for busy managers while maintaining robust checks, training
-          and documentation behind the scenes.
-        </p>
-      </div>
-
-      <div class="steps">
-        <div class="card">
-          <div class="step-number">1</div>
-          <h3>Tell us what you need</h3>
-          <p>
-            Share your service type, shift patterns, skill mix and any specialist needs. We agree
-            rates and terms up front – no surprises.
-          </p>
-        </div>
-        <div class="card">
-          <div class="step-number">2</div>
-          <h3>We match staff to your service</h3>
-          <p>
-            We allocate vetted, trained staff who are suited to your environment and brief them on
-            your expectations before they arrive.
-          </p>
-        </div>
-        <div class="card">
-          <div class="step-number">3</div>
-          <h3>We support, review & improve</h3>
-          <p>
-            We gather feedback from your team, support staff in post and continuously refine our
-            allocation to build a reliable team around your service.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOR PROFESSIONALS -->
-  <section id="professionals">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">For healthcare professionals</div>
-        <h2 class="section-title">Join the Unity Healthcare Staffing team</h2>
-        <p class="section-subtitle">
-          We are always interested in hearing from committed Healthcare Assistants, Support Workers
-          and Registered Nurses who share our values and want flexible, supported work.
-        </p>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Why work with us?</h3>
-          <ul class="list">
-            <li>Fair, transparent pay rates</li>
-            <li>Regular, reliable shifts where possible</li>
-            <li>Respectful, supportive relationships with our staff</li>
-            <li>Clear communication about expectations and feedback</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>What we look for</h3>
-          <ul class="list">
-            <li>Right to work in the UK</li>
-            <li>Relevant experience in care or nursing</li>
-            <li>Up-to-date mandatory training (or willingness to complete)</li>
-            <li>Genuine compassion and professionalism</li>
-          </ul>
-          <p style="margin-top:0.4rem;">
-            To register your interest, please complete the contact form or email your CV to
-            <b>info@unityhealthcarestaffing.co.uk</b>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-kicker">Get in touch</div>
-        <h2 class="section-title">Request staff or talk to us about your service</h2>
-        <p class="section-subtitle">
-          Whether you need urgent cover or you’re planning ahead, we’d be happy to discuss how
-          Unity Healthcare Staffing Ltd can support you.
-        </p>
-      </div>
-      <p style="margin-top:0.75rem;font-size:0.85rem;">
-  To request staff directly, you can also complete our
-  <a href="https://forms.gle/xBCAttAkVvT5U8iF8" target="_blank" style="color:#0b4f6c;font-weight:600;">
-    online booking request form
-  </a>.
-</p>
-
-      <div class="contact-grid">
-        <form>
-          <div class="field">
-            <label for="type">I am a…</label>
-            <select id="type" name="type">
-              <option value="care-provider">Care provider / manager</option>
-              <option value="professional">Healthcare professional</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your full name" />
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" />
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" placeholder="+44..." />
-          </div>
-          <div class="field">
-            <label for="message">How can we help?</label>
-            <textarea id="message" name="message" placeholder="Tell us about your staffing needs or enquiry"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;">Send enquiry</button>
-          <p style="font-size:0.78rem;margin-top:0.45rem;color:#8a94a9;">
-            Note: this form is for illustration. Connect it to your email or CRM using your chosen website platform.
-          </p>
-        </form>
-
-        <div class="contact-card">
-          <div class="contact-line">
-            <span class="contact-label">Company:</span> Unity Healthcare Staffing Ltd
-          </div>
-          <div class="contact-line">
-            <span class="contact-label">Company Number:</span> 16863419
-          </div>
-          <div class="contact-line">
-            <span class="contact-label">Registered Office:</span>
-            1 Pen Castell, Bangor, Wales, LL57 1NX
-          </div>
-          <div class="contact-line">
-            <span class="contact-label">Phone:</span> [your-phone]
-          </div>
-          <div class="contact-line">
-            <span class="contact-label">Email:</span> info@unityhealthcarestaffing.co.uk
-          </div>
-          <div class="contact-line">
-            <span class="contact-label">Service area:</span> North Wales and wider Wales (by agreement)
-          </div>
-          <p style="margin-top:0.75rem;font-size:0.82rem;color:#7f8ba2;">
-            For urgent staffing needs, please call us directly so we can respond as quickly as possible.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <div>© <span id="year"></span> Unity Healthcare Staffing Ltd. All rights reserved.</div>
-    <div>Company Number: 16863419 · Registered in England & Wales</div>
-  </div>
-</footer>
-
-<script>
+  // Footer year update
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-
-</body>
-</html>
