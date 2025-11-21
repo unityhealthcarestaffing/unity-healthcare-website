@@ -784,7 +784,13 @@
     <div>Company Number: 16863419 · Registered in England & Wales</div>
   </div>
 </footer>
-
+<!-- EmailJS (for email notifications) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // TODO: replace with your real EmailJS public key
+  emailjs.init("mMnrdgI8GnIyrpAqA");
+</script>
+  
 <!-- Firebase + Firestore -->
 <script type="module">
   const firebaseConfig = {
@@ -824,8 +830,45 @@
         createdAt: serverTimestamp()
       };
 
-      try {
+            try {
+        // 1. Save to Firestore
         await addDoc(collection(db, "enquiries"), payload);
+
+        // 2. Build a rich message for the email template
+        const messageText = `
+Client Enquiry Details:
+
+Name: ${payload.name}
+Email: ${payload.email}
+Phone: ${payload.phone}
+Service/Organisation: ${payload.serviceName || "-" }
+Type: ${payload.who}
+
+Message:
+${payload.message}
+        `;
+
+        // 3. Send email via EmailJS (does NOT affect the user if it fails)
+        try {
+          await emailjs.send(
+            "service_5k6rvri",          // <-- replace with your EmailJS service ID
+            "template_sh3ysl3",  // <-- replace with your client enquiry template ID
+            {
+              from_name: payload.name,
+              from_email: payload.email,
+              from_phone: payload.phone,
+              service_name: payload.serviceName || "-",
+              who: payload.who,
+              message: messageText,
+              time: new Date().toLocaleString()
+            }
+          );
+          console.log("EmailJS: client enquiry email sent");
+        } catch (emailError) {
+          console.error("EmailJS error (client enquiry):", emailError);
+        }
+
+        // 4. Update UI for the user
         clientForm.reset();
         clientFormMessage.textContent =
           "Thank you – your enquiry has been received. We will contact you shortly.";
@@ -836,8 +879,7 @@
           "Sorry, something went wrong. Please try again or email us directly.";
         clientFormMessage.classList.add("error");
       }
-    });
-  }
+
 
   // Staff form
   const staffForm = document.getElementById("staffForm");
