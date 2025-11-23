@@ -830,7 +830,7 @@
         createdAt: serverTimestamp()
       };
 
-            try {
+      try {
         // 1. Save to Firestore
         await addDoc(collection(db, "enquiries"), payload);
 
@@ -841,7 +841,7 @@ Client Enquiry Details:
 Name: ${payload.name}
 Email: ${payload.email}
 Phone: ${payload.phone}
-Service/Organisation: ${payload.serviceName || "-" }
+Service/Organisation: ${payload.serviceName || "-"}
 Type: ${payload.who}
 
 Message:
@@ -851,8 +851,8 @@ ${payload.message}
         // 3. Send email via EmailJS (does NOT affect the user if it fails)
         try {
           await emailjs.send(
-            "service_5k6rvri",          // <-- replace with your EmailJS service ID
-            "template_sh3ysl3",  // <-- replace with your client enquiry template ID
+            "service_5k6rvri",      // Your EmailJS service ID
+            "template_sh3ysl3",     // Your EmailJS client enquiry template ID
             {
               from_name: payload.name,
               from_email: payload.email,
@@ -879,7 +879,8 @@ ${payload.message}
           "Sorry, something went wrong. Please try again or email us directly.";
         clientFormMessage.classList.add("error");
       }
-
+    });
+  }
 
   // Staff form
   const staffForm = document.getElementById("staffForm");
@@ -923,5 +924,3 @@ ${payload.message}
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
-</body>
-</html>
