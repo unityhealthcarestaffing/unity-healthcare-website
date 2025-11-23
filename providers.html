@@ -724,11 +724,8 @@ ${payload.message}
           console.error("EmailJS error (client enquiry):", emailError);
         }
 
-        // 4. Update UI
-        clientForm.reset();
-        clientFormMessage.textContent =
-          "Thank you – your enquiry has been received. We will contact you shortly.";
-        clientFormMessage.classList.add("success");
+       // 4. Redirect to thank you page
+window.location.href = "thankyou.html";
       } catch (error) {
         console.error("Error saving enquiry:", error);
         clientFormMessage.textContent =
@@ -812,11 +809,8 @@ ${payload.notes || "-"}
           console.error("EmailJS error (staff request):", emailError);
         }
 
-        // 4. UI feedback
-        staffRequestForm.reset();
-        staffRequestFormMessage.textContent =
-          "Thank you – your staff request has been received. We will contact you shortly to confirm details.";
-        staffRequestFormMessage.classList.add("success");
+       // 4. Redirect to thank you page
+window.location.href = "thankyou.html";
       } catch (error) {
         console.error("Error saving staff request:", error);
         staffRequestFormMessage.textContent =
