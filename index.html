@@ -404,8 +404,7 @@
       <a href="#services">Services</a>
       <a href="#sectors">Who We Serve</a>
       <a href="#professionals">For Staff</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-outline">Client Portal</a>
+      <a href="#staff-request">Client Portal</a>
     </nav>
     <a href="#contact" class="btn btn-primary">Book Staff</a>
   </div>
@@ -624,7 +623,7 @@
     </div>
   </section>
 
-  <!-- FOR PROFESSIONALS (STAFF FORM) -->
+  <!-- FOR PROFESSIONALS (STAFF APPLICATION FORM) -->
   <section id="professionals">
     <div class="container">
       <div class="section-header">
@@ -703,7 +702,98 @@
     </div>
   </section>
 
-  <!-- CONTACT (CLIENT FORM) -->
+  <!-- CLIENT PORTAL – STAFF REQUEST FORM -->
+  <section id="staff-request">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Client portal</div>
+        <h2 class="section-title">Staff request form</h2>
+        <p class="section-subtitle">
+          Use this form to request agency staff for your service. We will review your request and
+          contact you to confirm availability, rates and booking details.
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <form id="staffRequestForm">
+          <div class="field">
+            <label for="requestType">I am a…</label>
+            <select id="requestType" name="requestType" required>
+              <option value="Care home">Care home</option>
+              <option value="Nursing home">Nursing home</option>
+              <option value="Supported living">Supported living</option>
+              <option value="Mental health service">Mental health service</option>
+              <option value="Hospital">Hospital</option>
+              <option value="Homelessness / community project">Homelessness / community project</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="requestServiceName">Service / organisation name</label>
+            <input id="requestServiceName" name="serviceName" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="requestLocation">Service location (town / postcode)</label>
+            <input id="requestLocation" name="location" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="requestContactName">Contact name</label>
+            <input id="requestContactName" name="contactName" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="requestEmail">Contact email</label>
+            <input id="requestEmail" name="email" type="email" required />
+          </div>
+
+          <div class="field">
+            <label for="requestPhone">Contact phone</label>
+            <input id="requestPhone" name="phone" type="tel" required />
+          </div>
+
+          <div class="field">
+            <label for="requestStaffRoles">Staff required (roles)</label>
+            <textarea id="requestStaffRoles" name="staffRoles" placeholder="e.g. 2 x HCAs, 1 x Nurse for night shift" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="requestStaffCount">Approximate number of staff needed</label>
+            <input id="requestStaffCount" name="staffCount" type="number" min="1" required />
+          </div>
+
+          <div class="field">
+            <label for="requestShiftDetails">Dates and times</label>
+            <textarea id="requestShiftDetails" name="shiftDetails" placeholder="e.g. 12-hour nights for 3 nights from 10/12/2025, 20:00–08:00" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="requestNotes">Additional information</label>
+            <textarea id="requestNotes" name="notes" placeholder="Any clinical needs, 1:1 observations, behavioural risks, language needs, etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Submit staff request</button>
+          <p id="staffRequestFormMessage" class="form-message"></p>
+        </form>
+
+        <div class="card">
+          <h3>After you submit this form</h3>
+          <ul class="list">
+            <li>We review your request and staffing needs.</li>
+            <li>We check availability from our staff bank.</li>
+            <li>We contact you to confirm details, rates and any compliance requirements.</li>
+          </ul>
+          <p style="margin-top:0.4rem;">
+            For urgent same-day cover, please phone us directly so we can respond as quickly as possible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (CLIENT ENQUIRY FORM) -->
   <section id="contact">
     <div class="container">
       <div class="section-header">
@@ -810,7 +900,7 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // Client form
+  // Client form (general enquiries)
   const clientForm = document.getElementById("clientForm");
   const clientFormMessage = document.getElementById("clientFormMessage");
 
@@ -849,7 +939,7 @@ Message:
 ${payload.message}
         `;
 
-        // 3. Send email via EmailJS (does NOT affect the user if it fails)
+        // 3. Send email via EmailJS
         try {
           await emailjs.send(
             "service_5k6rvri",      // Your EmailJS service ID
@@ -869,7 +959,7 @@ ${payload.message}
           console.error("EmailJS error (client enquiry):", emailError);
         }
 
-        // 4. Update UI for the user
+        // 4. Update UI
         clientForm.reset();
         clientFormMessage.textContent =
           "Thank you – your enquiry has been received. We will contact you shortly.";
@@ -883,7 +973,7 @@ ${payload.message}
     });
   }
 
-  // Staff form
+  // Staff application form (for professionals)
   const staffForm = document.getElementById("staffForm");
   const staffFormMessage = document.getElementById("staffFormMessage");
 
@@ -910,7 +1000,7 @@ ${payload.message}
         // 1. Save to Firestore
         await addDoc(collection(db, "staffApplications"), payload);
 
-        // 2. Optionally notify by EmailJS (use your own staff template ID)
+        // 2. Optionally notify by EmailJS (requires separate staff template)
         try {
           const staffMessageText = `
 New Staff Application
@@ -924,15 +1014,16 @@ Experience (years): ${payload.experienceYears || "-"}
 Experience settings:
 ${payload.settings || "-"}
 
-DBS status: ${payload.dbsStatus || "-"}
+DBS status:
+${payload.dbsStatus || "-"}
 
 Availability:
 ${payload.availability || "-"}
           `;
 
           await emailjs.send(
-            "service_5k6rvri",        // same service ID
-            "template_36yproc",    // TODO: replace with your real staff template ID
+            "service_5k6rvri",
+            "template_36yproc", // TODO: replace with your real staff application template ID in EmailJS
             {
               name: payload.name,
               email: payload.email,
@@ -960,6 +1051,94 @@ ${payload.availability || "-"}
         staffFormMessage.textContent =
           "Sorry, something went wrong. Please try again or email us directly.";
         staffFormMessage.classList.add("error");
+      }
+    });
+  }
+
+  // Staff request form (Client Portal)
+  const staffRequestForm = document.getElementById("staffRequestForm");
+  const staffRequestFormMessage = document.getElementById("staffRequestFormMessage");
+
+  if (staffRequestForm) {
+    staffRequestForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      staffRequestFormMessage.textContent = "";
+      staffRequestFormMessage.className = "form-message";
+
+      const formData = new FormData(staffRequestForm);
+      const payload = {
+        requestType: formData.get("requestType"),
+        serviceName: formData.get("serviceName"),
+        location: formData.get("location"),
+        contactName: formData.get("contactName"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        staffRoles: formData.get("staffRoles"),
+        staffCount: formData.get("staffCount"),
+        shiftDetails: formData.get("shiftDetails"),
+        notes: formData.get("notes"),
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        // 1. Save to Firestore
+        await addDoc(collection(db, "staffRequests"), payload);
+
+        // 2. Build email text for staff request
+        const requestMessageText = `
+New Staff Request
+
+Service type: ${payload.requestType}
+Service / organisation: ${payload.serviceName}
+Location: ${payload.location}
+
+Contact:
+- Name: ${payload.contactName}
+- Email: ${payload.email}
+- Phone: ${payload.phone}
+
+Staff required:
+${payload.staffRoles}
+
+Approximate number of staff: ${payload.staffCount}
+
+Dates and times:
+${payload.shiftDetails}
+
+Additional information:
+${payload.notes || "-"}
+        `;
+
+        // 3. Send email via EmailJS (using same template as general enquiries)
+        try {
+          await emailjs.send(
+            "service_5k6rvri",
+            "template_sh3ysl3", // reuse your client enquiry template
+            {
+              from_name: payload.contactName,
+              from_email: payload.email,
+              from_phone: payload.phone,
+              service_name: payload.serviceName,
+              who: `Staff request – ${payload.requestType}`,
+              message: requestMessageText,
+              time: new Date().toLocaleString()
+            }
+          );
+          console.log("EmailJS: staff request email sent");
+        } catch (emailError) {
+          console.error("EmailJS error (staff request):", emailError);
+        }
+
+        // 4. UI feedback
+        staffRequestForm.reset();
+        staffRequestFormMessage.textContent =
+          "Thank you – your staff request has been received. We will contact you shortly to confirm details.";
+        staffRequestFormMessage.classList.add("success");
+      } catch (error) {
+        console.error("Error saving staff request:", error);
+        staffRequestFormMessage.textContent =
+          "Sorry, something went wrong. Please try again or email us directly.";
+        staffRequestFormMessage.classList.add("error");
       }
     });
   }
