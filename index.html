@@ -784,14 +784,15 @@
     <div>Company Number: 16863419 · Registered in England & Wales</div>
   </div>
 </footer>
+
 <!-- EmailJS (for email notifications) -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  // TODO: replace with your real EmailJS public key
+  // Your real EmailJS public key
   emailjs.init("mMnrdgI8GnIyrpAqA");
 </script>
-  
-<!-- Firebase + Firestore -->
+
+<!-- Firebase + Firestore + EmailJS integration -->
 <script type="module">
   const firebaseConfig = {
     apiKey: "AIzaSyBe6amsLWa7o-Hp2Zwvn0dpjxfQ9ldbUUU",
@@ -905,12 +906,13 @@ ${payload.message}
         createdAt: serverTimestamp()
       };
 
-           try {
+      try {
         // 1. Save to Firestore
         await addDoc(collection(db, "staffApplications"), payload);
 
-        // 2. Build message text for the email
-        const staffMessageText = `
+        // 2. Optionally notify by EmailJS (use your own staff template ID)
+        try {
+          const staffMessageText = `
 New Staff Application
 
 Name: ${payload.name}
@@ -926,13 +928,11 @@ DBS status: ${payload.dbsStatus || "-"}
 
 Availability:
 ${payload.availability || "-"}
-        `;
+          `;
 
-        // 3. Send email via EmailJS (to your chosen recruitment inbox)
-        try {
           await emailjs.send(
-            "service_5k6rvri",        // Your EmailJS service ID
-            "template_36yproc",      // <-- replace with your staff template ID from EmailJS
+            "service_5k6rvri",        // same service ID
+            "template_36yproc",    // TODO: replace with your real staff template ID
             {
               name: payload.name,
               email: payload.email,
@@ -950,7 +950,7 @@ ${payload.availability || "-"}
           console.error("EmailJS error (staff application):", emailError);
         }
 
-        // 4. Update UI
+        // 3. UI feedback
         staffForm.reset();
         staffFormMessage.textContent =
           "Thank you – your registration has been received. We will contact you if your profile matches our current opportunities.";
@@ -961,8 +961,12 @@ ${payload.availability || "-"}
           "Sorry, something went wrong. Please try again or email us directly.";
         staffFormMessage.classList.add("error");
       }
+    });
+  }
 
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
+</body>
+</html>
