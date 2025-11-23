@@ -905,8 +905,52 @@ ${payload.message}
         createdAt: serverTimestamp()
       };
 
-      try {
+           try {
+        // 1. Save to Firestore
         await addDoc(collection(db, "staffApplications"), payload);
+
+        // 2. Build message text for the email
+        const staffMessageText = `
+New Staff Application
+
+Name: ${payload.name}
+Email: ${payload.email}
+Phone: ${payload.phone}
+Role: ${payload.role}
+Experience (years): ${payload.experienceYears || "-"}
+
+Experience settings:
+${payload.settings || "-"}
+
+DBS status: ${payload.dbsStatus || "-"}
+
+Availability:
+${payload.availability || "-"}
+        `;
+
+        // 3. Send email via EmailJS (to your chosen recruitment inbox)
+        try {
+          await emailjs.send(
+            "service_5k6rvri",        // Your EmailJS service ID
+            "TEMPLATE_ID_STAFF",      // <-- replace with your staff template ID from EmailJS
+            {
+              name: payload.name,
+              email: payload.email,
+              phone: payload.phone,
+              role: payload.role,
+              experience_years: payload.experienceYears || "-",
+              settings: payload.settings || "-",
+              dbs_status: payload.dbsStatus || "-",
+              availability: payload.availability || "-",
+              time: new Date().toLocaleString()
+            }
+          );
+          console.log("EmailJS: staff application email sent");
+        } catch (emailError) {
+          console.error("EmailJS error (staff application):", emailError);
+        }
+
+        // 4. Update UI
         staffForm.reset();
         staffFormMessage.textContent =
           "Thank you – your registration has been received. We will contact you if your profile matches our current opportunities.";
@@ -917,8 +961,6 @@ ${payload.message}
           "Sorry, something went wrong. Please try again or email us directly.";
         staffFormMessage.classList.add("error");
       }
-    });
-  }
 
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
