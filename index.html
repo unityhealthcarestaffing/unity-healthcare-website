@@ -34,7 +34,6 @@
       font-size: 0.8rem;
       padding: 0.45rem 0.5rem;
     }
-
     .top-banner span { font-weight: 600; }
 
     header {
@@ -131,32 +130,21 @@
 
     .btn-outline:hover { background: var(--primary-light); }
 
-    /* HERO (PHOTO BANNER) */
-    .hero { padding: 1.2rem 0 1.8rem; }
+    /* HERO (keeps your original layout, adds photo background safely) */
+    .hero { padding: 0; }
 
-    .hero-banner {
-      position: relative;
-      border-radius: 1.25rem;
-      overflow: hidden;
-      min-height: 430px;
-      background: url("assets/img/hero-home.jpg") center/cover no-repeat;
-      box-shadow: 0 18px 44px rgba(15, 35, 52, 0.14);
-      border: 1px solid #e5ebf4;
-    }
-
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(11,79,108,.92), rgba(11,79,108,.35));
+    .hero.hero-photo {
+      padding: 2.3rem 0 2rem;
+      background:
+        linear-gradient(90deg, rgba(11,79,108,.92), rgba(11,79,108,.35)),
+        url("assets/img/hero-home.jpg") center/cover no-repeat;
     }
 
     .hero-inner {
-      position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 2rem;
       align-items: center;
-      padding: 2.2rem;
-      color: #fff;
     }
 
     .hero-badge {
@@ -166,18 +154,17 @@
       padding: 0.3rem 0.75rem;
       border-radius: 999px;
       background: rgba(255,255,255,.14);
-      color: #e9fffb;
+      color: rgba(255,255,255,.95);
       font-size: 0.8rem;
       margin-bottom: 0.75rem;
       border: 1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(6px);
     }
 
     .hero-title {
-      font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+      font-size: clamp(2.1rem, 3.4vw, 2.9rem);
       font-weight: 800;
       margin-bottom: 0.75rem;
-      line-height: 1.12;
+      line-height: 1.15;
       color: #fff;
     }
 
@@ -201,22 +188,21 @@
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.25rem;
       font-size: 0.82rem;
-      color: rgba(255,255,255,.85);
+      color: rgba(255,255,255,.88);
     }
 
     .hero-card {
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.93);
       border-radius: 1.25rem;
-      padding: 1.1rem 1.1rem;
+      padding: 1.25rem 1.1rem;
       box-shadow: 0 14px 38px rgba(15, 35, 52, 0.12);
       border: 1px solid rgba(255,255,255,.7);
-      color: var(--text);
     }
 
     .hero-card-title {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 800;
       margin-bottom: 0.6rem;
       color: var(--dark);
@@ -225,32 +211,32 @@
     .hero-stat {
       display: flex;
       justify-content: space-between;
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       margin-bottom: 0.45rem;
       gap: 0.8rem;
+      color: #526581;
     }
 
     .hero-stat span:last-child {
-      font-weight: 700;
+      font-weight: 800;
       color: var(--primary);
       text-align: right;
     }
 
-    /* Trust strip */
+    /* Trust strip (new) */
     .trust-strip {
       margin-top: 1rem;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.75rem;
+      max-width: 680px;
     }
-
     .trust-item {
       background: rgba(255,255,255,.14);
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 1rem;
       padding: 0.8rem 0.9rem;
-      backdrop-filter: blur(6px);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: rgba(255,255,255,.92);
     }
 
@@ -323,12 +309,13 @@
       color: var(--accent);
     }
 
-    /* Photo service cards */
+    /* Photo cards for services (new) */
     .img-cards{
       display:grid;
       gap: 1rem;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     .img-card{
@@ -338,18 +325,19 @@
       border: 1px solid #e3e9f3;
       box-shadow: 0 10px 24px rgba(15, 35, 52, 0.08);
       min-height: 240px;
+      background: #fff;
     }
 
     .img-card img{
       width:100%;
       height: 240px;
       object-fit: cover;
-      transform: scale(1.02);
+      display:block;
     }
 
     .img-card .shade{
       position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.70));
+      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.72));
     }
 
     .img-card .txt{
@@ -378,7 +366,7 @@
     }
 
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; padding: 1.4rem; }
+      .hero-inner { grid-template-columns: 1fr; }
       .trust-strip { grid-template-columns: 1fr; }
       .img-cards { grid-template-columns: 1fr; }
     }
@@ -386,6 +374,7 @@
     @media (max-width: 800px) {
       .grid-3, .grid-2 { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .hero.hero-photo { padding: 1.6rem 0 1.4rem; }
     }
   </style>
 </head>
@@ -403,6 +392,7 @@
       </div>
       <div class="brand-text">Unity Healthcare Staffing Ltd</div>
     </div>
+
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="providers.html">For Providers</a>
@@ -410,68 +400,66 @@
       <a href="providers.html#contact">Contact</a>
       <a href="providers.html#staff-request" class="btn btn-outline">Client Portal</a>
     </nav>
+
     <a href="providers.html#staff-request" class="btn btn-primary">Book Staff</a>
     <a href="policies.html">Policies</a>
   </div>
 </header>
 
 <main>
-  <!-- HERO (PHOTO BANNER) -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-banner">
-        <div class="hero-overlay"></div>
+  <!-- HERO -->
+  <section class="hero hero-photo">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-badge">Healthcare staffing for England & Wales</div>
 
-        <div class="hero-inner">
-          <div>
-            <div class="hero-badge">Healthcare staffing for England & Wales</div>
-            <h1 class="hero-title">
-              Reliable <span>care & nursing staff</span> when you need them most.
-            </h1>
-            <p class="hero-text">
-              Unity Healthcare Staffing Ltd supplies carefully vetted, compassionate healthcare workers
-              and nurses to care homes, supported living services, hospitals and community providers
-              across England & Wales – with a focus on quality, reliability and dignity in care.
-            </p>
-            <div class="hero-cta">
-              <a href="providers.html#staff-request" class="btn btn-primary">Request staff today</a>
-              <a href="staff.html" class="btn btn-outline">Join our staff bank</a>
-            </div>
+        <h1 class="hero-title">
+          Reliable <span>care & nursing staff</span> when you need them most.
+        </h1>
 
-            <div class="hero-meta">
-              <span>Based in Bangor, serving England & Wales</span>
-              <span>Care & support staff · Nurses</span>
-              <span>Branded uniforms & compliance-focused</span>
-            </div>
+        <p class="hero-text">
+          Unity Healthcare Staffing Ltd supplies carefully vetted, compassionate healthcare workers
+          and nurses to care homes, supported living services, hospitals and community providers
+          across England & Wales – with a focus on quality, reliability and dignity in care.
+        </p>
 
-            <div class="trust-strip">
-              <div class="trust-item"><b>Fast cover</b><br/>Short notice & planned shifts</div>
-              <div class="trust-item"><b>Vetted staff</b><br/>Right to work & compliance checks</div>
-              <div class="trust-item"><b>Reliable support</b><br/>Responsive bookings & follow-up</div>
-            </div>
-          </div>
+        <div class="hero-cta">
+          <a href="providers.html#staff-request" class="btn btn-primary">Request staff today</a>
+          <a href="staff.html" class="btn btn-outline">Join our staff bank</a>
+        </div>
 
-          <aside class="hero-card">
-            <div class="hero-card-title">At a glance</div>
-            <div class="hero-stat">
-              <span>Service types</span>
-              <span>Care, support, nursing</span>
-            </div>
-            <div class="hero-stat">
-              <span>Settings</span>
-              <span>Care homes · Supported living · Hospitals</span>
-            </div>
-            <div class="hero-stat">
-              <span>Coverage</span>
-              <span>England & Wales</span>
-            </div>
-            <div class="hero-stat">
-              <span>Company number</span>
-              <span>16863419</span>
-            </div>
-          </aside>
+        <div class="hero-meta">
+          <span>Based in Bangor, serving England & Wales</span>
+          <span>Care & support staff · Nurses</span>
+          <span>Branded uniforms & compliance-focused</span>
+        </div>
+
+        <div class="trust-strip">
+          <div class="trust-item"><b>Fast cover</b><br/>Short notice & planned shifts</div>
+          <div class="trust-item"><b>Vetted staff</b><br/>Right to work & compliance checks</div>
+          <div class="trust-item"><b>Reliable support</b><br/>Responsive bookings & follow-up</div>
         </div>
       </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-title">At a glance</div>
+        <div class="hero-stat">
+          <span>Service types</span>
+          <span>Care, support, nursing</span>
+        </div>
+        <div class="hero-stat">
+          <span>Settings</span>
+          <span>Care homes · Supported living · Hospitals</span>
+        </div>
+        <div class="hero-stat">
+          <span>Coverage</span>
+          <span>England & Wales</span>
+        </div>
+        <div class="hero-stat">
+          <span>Company number</span>
+          <span>16863419</span>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -510,7 +498,7 @@
     </div>
   </section>
 
-  <!-- SERVICES SNAPSHOT (WITH PHOTOS) -->
+  <!-- SERVICES SNAPSHOT -->
   <section id="services">
     <div class="container">
       <div class="section-header">
@@ -522,6 +510,7 @@
         </p>
       </div>
 
+      <!-- NEW: Photo cards -->
       <div class="img-cards">
         <div class="img-card">
           <img loading="lazy" src="assets/img/care-home.jpg" alt="Care home staffing">
@@ -550,8 +539,6 @@
           </div>
         </div>
       </div>
-
-      <div style="height:1rem"></div>
 
       <div class="grid grid-3">
         <div class="card">
