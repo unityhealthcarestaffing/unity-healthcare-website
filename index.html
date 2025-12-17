@@ -5,7 +5,6 @@
   <title>Unity Healthcare Staffing Ltd | Healthcare Staffing in England & Wales</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Unity Healthcare Staffing Ltd supplies reliable, compassionate care and nursing staff to care homes, supported living, hospitals and community services across England & Wales." />
-
   <style>
     :root {
       --primary: #0b4f6c;
@@ -14,10 +13,10 @@
       --dark: #102a43;
       --text: #334e68;
       --bg: #f5f7fb;
-      --border: #e3e9f3;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
@@ -28,30 +27,31 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; height: auto; display: block; }
 
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* Top banner */
     .top-banner {
       background: var(--primary);
       color: #ffffff;
       text-align: center;
-      font-size: 0.85rem;
-      padding: 0.55rem 0.75rem;
+      font-size: 0.8rem;
+      padding: 0.45rem 0.5rem;
     }
-    .top-banner span { font-weight: 700; }
 
-    /* Header */
+    .top-banner span {
+      font-weight: 600;
+    }
+
     header {
       background: white;
       border-bottom: 1px solid #e1e7f0;
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 10;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
     }
 
     .nav {
@@ -60,14 +60,12 @@
       justify-content: space-between;
       padding: 0.75rem 0;
       gap: 1rem;
-      flex-wrap: wrap;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      min-width: 260px;
     }
 
     .brand-logo {
@@ -76,71 +74,71 @@
       border-radius: 999px;
       overflow: hidden;
       border: 2px solid var(--primary-light);
-      background: #fff;
-      flex: 0 0 auto;
     }
 
     .brand-text {
-      font-weight: 900;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: 1.15rem;
       color: var(--primary);
-      line-height: 1.05;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.15rem;
+      gap: 1.2rem;
       font-size: 0.95rem;
-      flex-wrap: wrap;
-      justify-content: center;
     }
 
-    .nav-links a { opacity: 0.85; }
-    .nav-links a:hover { opacity: 1; color: var(--primary); }
+    .nav-links a {
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
 
     .btn {
       display: inline-block;
-      padding: 0.65rem 1.25rem;
+      padding: 0.65rem 1.3rem;
       border-radius: 999px;
-      border: 1px solid transparent;
-      font-size: 0.95rem;
-      font-weight: 700;
+      border: none;
       cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
       transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
-      white-space: nowrap;
       text-align: center;
     }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 10px 22px rgba(11, 79, 108, 0.22);
+      box-shadow: 0 8px 18px rgba(11, 79, 108, 0.22);
     }
+
     .btn-primary:hover {
       background: #093b50;
       transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(11, 79, 108, 0.28);
+      box-shadow: 0 12px 24px rgba(11, 79, 108, 0.28);
     }
 
     .btn-outline {
       background: white;
-      border-color: #cbd2e1;
+      border: 1px solid #cbd2e1;
       color: var(--primary);
     }
-    .btn-outline:hover { background: var(--primary-light); }
 
-    /* HERO with banner.png */
-    .hero {
-      padding: 2.6rem 0 2.2rem;
-      background:
-        linear-gradient(90deg, rgba(11,79,108,.90), rgba(11,79,108,.38)),
-        url("assets/banner.png") center/cover no-repeat;
+    .btn-outline:hover {
+      background: var(--primary-light);
     }
+
+    /* HERO */
+    .hero { padding: 2.75rem 0 2rem; }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 2rem;
       align-items: center;
     }
@@ -148,31 +146,29 @@
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.32rem 0.85rem;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
       border-radius: 999px;
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.18);
-      color: rgba(255,255,255,.95);
-      font-size: 0.82rem;
-      margin-bottom: 0.85rem;
+      background: #ecf7f5;
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .hero-title {
-      font-size: clamp(2.05rem, 3.6vw, 3.1rem);
-      font-weight: 950;
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.1rem, 3.4vw, 2.8rem);
+      font-weight: 750;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
     }
-    .hero-title span { color: #aef2ea; }
+
+    .hero-title span { color: var(--primary); }
 
     .hero-text {
-      color: rgba(255,255,255,.92);
-      max-width: 620px;
-      font-size: 1.02rem;
+      font-size: 0.98rem;
+      max-width: 540px;
       margin-bottom: 1.25rem;
+      color: #526581;
     }
 
     .hero-cta {
@@ -180,104 +176,95 @@
       flex-wrap: wrap;
       gap: 0.75rem;
       align-items: center;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.4rem;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.1rem;
-      color: rgba(255,255,255,.88);
-      font-size: 0.86rem;
+      gap: 1.25rem;
+      font-size: 0.78rem;
+      color: #7a8ba3;
     }
 
     .hero-card {
-      background: rgba(255,255,255,.93);
-      border: 1px solid rgba(255,255,255,.7);
+      background: white;
       border-radius: 1.25rem;
-      padding: 1.15rem 1.1rem;
-      box-shadow: 0 16px 42px rgba(15,35,52,.14);
+      padding: 1.25rem 1.1rem;
+      box-shadow: 0 14px 38px rgba(15, 35, 52, 0.09);
+      border: 1px solid #e5ebf4;
     }
 
     .hero-card-title {
-      font-weight: 950;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
       color: var(--dark);
-      margin-bottom: 0.65rem;
-      font-size: 0.95rem;
     }
 
     .hero-stat {
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.86rem;
-      margin-bottom: 0.5rem;
-      color: #526581;
-    }
-    .hero-stat span:last-child {
-      font-weight: 950;
-      color: var(--primary);
-      text-align: right;
+      font-size: 0.8rem;
+      margin-bottom: 0.45rem;
     }
 
-    /* Trust strip */
-    .trust-strip {
-      margin-top: 1rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.75rem;
-      max-width: 720px;
+    .hero-stat span:last-child {
+      font-weight: 600;
+      color: var(--primary);
     }
-    .trust-item {
-      background: rgba(255,255,255,.14);
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 1rem;
-      padding: 0.85rem 0.95rem;
-      color: rgba(255,255,255,.92);
-      font-size: 0.92rem;
+
+    /* ✅ NEW: banner background for hero (does not change your content) */
+    .hero.has-banner {
+      background:
+        linear-gradient(90deg, rgba(245,247,251,.96), rgba(245,247,251,.86)),
+        url("assets/banner.png") center/cover no-repeat;
     }
 
     /* Sections */
     section { padding: 2.5rem 0; }
     section:nth-of-type(odd) { background: white; }
 
-    .section-header { margin-bottom: 1.25rem; }
+    .section-header { margin-bottom: 1.25rem; text-align: left; }
+
     .section-kicker {
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      font-weight: 900;
       margin-bottom: 0.25rem;
+      font-weight: 600;
     }
+
     .section-title {
-      font-size: 1.45rem;
-      font-weight: 950;
+      font-size: 1.4rem;
+      font-weight: 700;
       color: var(--dark);
       margin-bottom: 0.25rem;
     }
+
     .section-subtitle {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: #6b7b93;
-      max-width: 720px;
+      max-width: 640px;
     }
 
     .grid { display: grid; gap: 1rem; }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     .card {
       background: white;
       border-radius: 1.2rem;
       padding: 1rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 20px rgba(15,35,52,.06);
-      font-size: 0.92rem;
+      border: 1px solid #e3e9f3;
+      box-shadow: 0 6px 18px rgba(15, 35, 52, 0.06);
+      font-size: 0.9rem;
     }
 
     .card h3 {
       font-size: 1rem;
-      font-weight: 950;
+      font-weight: 650;
       margin-bottom: 0.4rem;
       color: var(--dark);
     }
@@ -285,442 +272,423 @@
     .pill {
       display: inline-block;
       font-size: 0.75rem;
-      padding: 0.22rem 0.7rem;
+      padding: 0.2rem 0.65rem;
       border-radius: 999px;
       background: var(--primary-light);
       color: var(--primary);
       margin-bottom: 0.35rem;
-      font-weight: 900;
     }
 
     .list {
       list-style: none;
       margin-top: 0.35rem;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
     }
-    .list li::before { content: "• "; color: var(--accent); }
 
-    /* Service image cards (crop bottom labels) */
-    .img-cards {
+    .list li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    /* ✅ NEW: services image strip (uses your 3 images; crops out labels) */
+    .service-images {
       display: grid;
-      gap: 1rem;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
       margin-top: 1rem;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
-    .img-card {
-      position: relative;
-      border-radius: 1.25rem;
+    .service-img-card {
+      border-radius: 1.2rem;
       overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 12px 26px rgba(15,35,52,.09);
+      border: 1px solid #e3e9f3;
+      box-shadow: 0 10px 24px rgba(15, 35, 52, 0.08);
       background: #fff;
+      position: relative;
     }
 
-    .img-frame {
-      height: 235px;
-      overflow: hidden; /* crops bottom label */
+    .service-img-frame {
+      height: 220px;
+      overflow: hidden; /* crops bottom text on the image */
       position: relative;
       background: #000;
     }
 
-    .img-frame img {
+    .service-img-frame img {
       width: 100%;
-      height: 310px;              /* taller than frame => cropping */
+      height: 300px;              /* taller than frame => crop */
       object-fit: cover;
-      object-position: center 16%; /* pushes view upward to hide bottom text */
-      display: block;
+      object-position: center 15%; /* shows upper part, hides bottom label */
       transform: scale(1.02);
-      filter: saturate(1.05) contrast(1.03);
+      display: block;
     }
 
-    .img-shade {
+    .service-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62));
+      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.60));
       pointer-events: none;
     }
 
-    .img-text {
+    .service-img-text {
       position: absolute;
       left: 0; right: 0; bottom: 0;
-      padding: 1rem;
+      padding: 0.9rem 0.95rem;
       color: #fff;
       pointer-events: none;
     }
 
-    .img-text h3 { margin: 0; font-size: 1.05rem; font-weight: 950; }
-    .img-text p { margin: 0.35rem 0 0 0; opacity: 0.95; font-size: 0.92rem; }
-
-    /* CTA/App QR card (branded QR overlay) */
-    .cta-grid {
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 1rem;
-      align-items: stretch;
+    .service-img-text h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 750;
+      color: #fff;
     }
 
-    .qr-wrap{
-      display:flex;
-      gap: 1rem;
+    .service-img-text p {
+      margin: 0.3rem 0 0 0;
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    /* ✅ NEW: QR block + branded overlay (no path changes) */
+    .qr-row {
+      display: flex;
       align-items: center;
+      gap: 1rem;
       flex-wrap: wrap;
-      margin-top: .85rem;
+      margin-top: 0.75rem;
     }
 
-    .qr-card{
+    .qr-box {
       width: 170px;
       height: 170px;
       position: relative;
       border-radius: 1rem;
-      border: 1px solid var(--border);
+      border: 1px solid #e3e9f3;
       background: #fff;
-      padding: .55rem;
-      box-shadow: 0 10px 24px rgba(15,35,52,.07);
+      padding: 0.55rem;
+      box-shadow: 0 10px 22px rgba(15, 35, 52, 0.08);
     }
 
-    .qr-card img.qr-img{
+    .qr-box img.qr-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      display:block;
     }
 
-    /* Branded logo overlay in the middle of the QR (no image editing needed) */
-    .qr-card .qr-logo-bg{
-      position:absolute;
-      left:50%; top:50%;
-      width: 54px; height: 54px;
-      transform: translate(-50%,-50%);
+    .qr-box .qr-logo-bg {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 54px;
+      height: 54px;
+      transform: translate(-50%, -50%);
       background: #fff;
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid #e3e9f3;
       box-shadow: 0 8px 18px rgba(15,35,52,.12);
     }
 
-    .qr-card img.qr-logo{
-      position:absolute;
-      left:50%; top:50%;
-      width: 38px; height: 38px;
-      transform: translate(-50%,-50%);
-      border-radius: 10px;
-      background:#fff;
+    .qr-box img.qr-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 38px;
+      height: 38px;
+      transform: translate(-50%, -50%);
       object-fit: contain;
+      border-radius: 10px;
+      background: #fff;
     }
 
     footer {
       border-top: 1px solid #dde3f0;
       background: white;
-      padding: 0.95rem 0;
-      font-size: 0.82rem;
+      padding: 0.9rem 0;
+      font-size: 0.8rem;
       color: #78839a;
     }
 
     .footer-inner {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       gap: 0.75rem;
-      flex-wrap: wrap;
       align-items: center;
     }
 
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .trust-strip { grid-template-columns: 1fr; }
-      .img-cards { grid-template-columns: 1fr; }
-      .cta-grid { grid-template-columns: 1fr; }
-    }
-
     @media (max-width: 800px) {
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero-inner,
+      .grid-3,
+      .grid-2,
+      .service-images {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .nav-links { display: none; }
+      .hero { padding-top: 1.75rem; }
     }
   </style>
 </head>
-
 <body>
 
-  <div class="top-banner">
-    Now supplying agency staff across <span>England & Wales</span> – contact us to discuss your service.
+<div class="top-banner">
+  Now supplying agency staff across <span>England & Wales</span> – contact us to discuss your service.
+</div>
+
+<header>
+  <div class="container nav">
+    <div class="nav-left">
+      <div class="brand-logo">
+        <img src="assets/logo.png" alt="Unity Healthcare Staffing Logo">
+      </div>
+      <div class="brand-text">Unity Healthcare Staffing Ltd</div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="providers.html">For Providers</a>
+      <a href="staff.html">For Staff</a>
+      <a href="providers.html#contact">Contact</a>
+      <a href="providers.html#staff-request" class="btn btn-outline">Client Portal</a>
+    </nav>
+    <a href="providers.html#staff-request" class="btn btn-primary">Book Staff</a>
+    <a href="policies.html">Policies</a>
   </div>
+</header>
 
-  <header>
-    <div class="container nav">
-      <div class="nav-left">
-        <div class="brand-logo">
-          <img src="assets/logo.png" alt="Unity Healthcare Staffing Logo">
+<main>
+  <!-- HERO -->
+  <section class="hero has-banner">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-badge">Healthcare staffing for England & Wales</div>
+        <h1 class="hero-title">
+          Reliable <span>care & nursing staff</span> when you need them most.
+        </h1>
+        <p class="hero-text">
+          Unity Healthcare Staffing Ltd supplies carefully vetted, compassionate healthcare workers
+          and nurses to care homes, supported living services, hospitals and community providers
+          across England & Wales – with a focus on quality, reliability and dignity in care.
+        </p>
+        <div class="hero-cta">
+          <a href="providers.html#staff-request" class="btn btn-primary">Request staff today</a>
+          <a href="staff.html" class="btn btn-outline">Join our staff bank</a>
         </div>
-        <div class="brand-text">Unity Healthcare Staffing Ltd</div>
+        <div class="hero-meta">
+          <span>Based in Bangor, serving England & Wales</span>
+          <span>Care & support staff · Nurses</span>
+          <span>Branded uniforms & compliance-focused</span>
+        </div>
       </div>
-
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="providers.html">For Providers</a>
-        <a href="staff.html">For Staff</a>
-        <a href="providers.html#contact">Contact</a>
-        <a href="providers.html#staff-request">Client Portal</a>
-        <a href="policies.html">Policies</a>
-      </nav>
-
-      <a href="providers.html#staff-request" class="btn btn-primary">Book Staff</a>
+      <aside class="hero-card">
+        <div class="hero-card-title">At a glance</div>
+        <div class="hero-stat">
+          <span>Service types</span>
+          <span>Care, support, nursing</span>
+        </div>
+        <div class="hero-stat">
+          <span>Settings</span>
+          <span>Care homes · Supported living · Hospitals</span>
+        </div>
+        <div class="hero-stat">
+          <span>Coverage</span>
+          <span>England & Wales</span>
+        </div>
+        <div class="hero-stat">
+          <span>Company number</span>
+          <span>16863419</span>
+        </div>
+      </aside>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div>
-          <div class="hero-badge">Healthcare staffing for England & Wales</div>
-
-          <h1 class="hero-title">
-            Reliable <span>care & nursing staff</span> when you need them most.
-          </h1>
-
-          <p class="hero-text">
-            Unity Healthcare Staffing Ltd supplies carefully vetted, compassionate healthcare workers
-            and nurses to care homes, supported living services, hospitals and community providers
-            across England & Wales – with a focus on quality, reliability and dignity in care.
-          </p>
-
-          <div class="hero-cta">
-            <a href="providers.html#staff-request" class="btn btn-primary">Request staff today</a>
-            <a href="staff.html" class="btn btn-outline">Join our staff bank</a>
-          </div>
-
-          <div class="hero-meta">
-            <span>Based in Bangor, serving England & Wales</span>
-            <span>Care & support staff · Nurses</span>
-            <span>Branded uniforms & compliance-focused</span>
-          </div>
-
-          <div class="trust-strip">
-            <div class="trust-item"><b>Fast cover</b><br/>Short notice & planned shifts</div>
-            <div class="trust-item"><b>Vetted staff</b><br/>Right to work & compliance checks</div>
-            <div class="trust-item"><b>Reliable support</b><br/>Responsive bookings & follow-up</div>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="hero-card-title">At a glance</div>
-          <div class="hero-stat"><span>Service types</span><span>Care, support, nursing</span></div>
-          <div class="hero-stat"><span>Settings</span><span>Care homes · Supported living · Hospitals</span></div>
-          <div class="hero-stat"><span>Coverage</span><span>England & Wales</span></div>
-          <div class="hero-stat"><span>Company number</span><span>16863419</span></div>
-        </aside>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Who we are</div>
+        <h2 class="section-title">A values-led healthcare staffing partner</h2>
+        <p class="section-subtitle">
+          Unity Healthcare Staffing Ltd is led by an experienced healthcare worker and chartered
+          management professional, combining frontline care experience with strong governance,
+          financial oversight and a genuine passion for quality.
+        </p>
       </div>
-    </section>
 
-    <!-- ABOUT / MISSION / VALUES / VISION -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Who we are</div>
-          <h2 class="section-title">A values-led healthcare staffing partner</h2>
-          <p class="section-subtitle">
-            Unity Healthcare Staffing Ltd is led by an experienced healthcare worker and chartered
-            management professional, combining frontline care experience with strong governance,
-            financial oversight and a genuine passion for quality.
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Our mission</h3>
+          <p>
+            To support health and social care providers with reliable, well-presented and
+            well-supported staff, so that residents, patients and service users receive safe,
+            compassionate and consistent care – every shift.
           </p>
         </div>
-
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Our mission</h3>
-            <p>
-              To support health and social care providers with reliable, well-presented and
-              well-supported staff, so that residents, patients and service users receive safe,
-              compassionate and consistent care – every shift.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Our values</h3>
-            <ul class="list">
-              <li><b>Integrity</b> – transparent, honest and accountable in all we do.</li>
-              <li><b>Compassion</b> – treating every person with dignity and respect.</li>
-              <li><b>Excellence</b> – high standards in recruitment, training and performance.</li>
-              <li><b>Unity</b> – working in partnership with providers, staff and communities.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div style="height:1rem"></div>
-
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Our vision</h3>
-            <p>
-              To be a trusted staffing partner across England & Wales, recognised for dependable staffing,
-              ethical recruitment, and high-quality service that strengthens care delivery.
-            </p>
-          </div>
-          <div class="card">
-            <h3>What makes us different</h3>
-            <ul class="list">
-              <li>Compliance-focused onboarding and checks</li>
-              <li>Responsive booking support for clients</li>
-              <li>Professional presentation and clear communication</li>
-              <li>Respectful, person-centred care culture</li>
-            </ul>
-          </div>
+        <div class="card">
+          <h3>Our values</h3>
+          <ul class="list">
+            <li><b>Integrity</b> – transparent, honest and accountable in all we do.</li>
+            <li><b>Compassion</b> – treating every person with dignity and respect.</li>
+            <li><b>Excellence</b> – high standards in recruitment, training and performance.</li>
+            <li><b>Unity</b> – working in partnership with providers, staff and communities.</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">What we do</div>
-          <h2 class="section-title">Staffing solutions tailored to your service</h2>
-          <p class="section-subtitle">
-            We provide healthcare assistants, support workers and nurses to cover gaps in rotas,
-            respond to unplanned absences and support long-term staffing strategies.
-          </p>
-        </div>
+  <!-- SERVICES SNAPSHOT -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">What we do</div>
+        <h2 class="section-title">Staffing solutions tailored to your service</h2>
+        <p class="section-subtitle">
+          We provide healthcare assistants, support workers and nurses to cover gaps in rotas,
+          respond to unplanned absences and support long-term staffing strategies.
+        </p>
+      </div>
 
-        <div class="img-cards">
-          <div class="img-card">
-            <div class="img-frame">
-              <img src="assets/carehomes.png" alt="Care home staffing" loading="lazy">
-              <div class="img-shade"></div>
-              <div class="img-text">
-                <h3>Care Homes</h3>
-                <p>Experienced carers and nurses for safe, dignified care.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="img-card">
-            <div class="img-frame">
-              <img src="assets/supported.png" alt="Supported living staffing" loading="lazy">
-              <div class="img-shade"></div>
-              <div class="img-text">
-                <h3>Supported Living</h3>
-                <p>Support workers who promote independence and wellbeing.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="img-card">
-            <div class="img-frame">
-              <img src="assets/community.png" alt="Hospitals and community staffing" loading="lazy">
-              <div class="img-shade"></div>
-              <div class="img-text">
-                <h3>Hospitals & Community</h3>
-                <p>Shift-ready clinical cover when you need it most.</p>
-              </div>
+      <!-- ✅ NEW: image strip (does not remove your existing service cards) -->
+      <div class="service-images">
+        <div class="service-img-card">
+          <div class="service-img-frame">
+            <img src="assets/carehomes.png" alt="Care Homes">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-text">
+              <h3>Care Homes</h3>
+              <p>Experienced carers and nurses for safe, dignified care.</p>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-3">
-          <div class="card">
-            <span class="pill">Care & Support Staff</span>
-            <h3>Healthcare Assistants & Support Workers</h3>
-            <p>
-              Compassionate, experienced staff to support with personal care, daily living,
-              social inclusion and wellbeing in residential and community settings.
-            </p>
+        <div class="service-img-card">
+          <div class="service-img-frame">
+            <img src="assets/supported.png" alt="Supported Living">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-text">
+              <h3>Supported Living</h3>
+              <p>Support workers who promote independence and wellbeing.</p>
+            </div>
           </div>
+        </div>
 
-          <div class="card">
-            <span class="pill">Nursing</span>
-            <h3>Registered Nurses</h3>
-            <p>
-              Qualified nurses for temporary cover, nights, weekends or ongoing block bookings,
-              helping you maintain safe clinical standards.
-            </p>
-          </div>
-
-          <div class="card">
-            <span class="pill">Uniforms & Presentation</span>
-            <h3>Branded uniforms & workwear</h3>
-            <p>
-              Professional Unity-branded uniforms for our staff, supporting a consistent, confident
-              and reassuring presence in your service.
-            </p>
+        <div class="service-img-card">
+          <div class="service-img-frame">
+            <img src="assets/community.png" alt="Hospitals and Community">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-text">
+              <h3>Hospitals &amp; Community</h3>
+              <p>Shift-ready clinical cover when you need it most.</p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- NEXT STEPS + APP DOWNLOAD (restored and clean) -->
-    <section id="next-steps">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Next steps</div>
-          <h2 class="section-title">Ready to work with Unity Healthcare Staffing?</h2>
-          <p class="section-subtitle">
-            Whether you’re a provider looking for agency staff or a healthcare professional looking
-            for flexible work, we’d be pleased to hear from you.
+      <!-- Your original 3 cards remain exactly as-is -->
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="pill">Care & Support Staff</span>
+          <h3>Healthcare Assistants & Support Workers</h3>
+          <p>
+            Compassionate, experienced staff to support with personal care, daily living,
+            social inclusion and wellbeing in residential and community settings.
           </p>
         </div>
+        <div class="card">
+          <span class="pill">Nursing</span>
+          <h3>Registered Nurses</h3>
+          <p>
+            Qualified nurses for temporary cover, nights, weekends or ongoing block bookings,
+            helping you maintain safe clinical standards.
+          </p>
+        </div>
+        <div class="card">
+          <span class="pill">Uniforms & Presentation</span>
+          <h3>Branded uniforms & workwear</h3>
+          <p>
+            Professional Unity-branded uniforms for our staff, supporting a consistent, confident
+            and reassuring presence in your service.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="cta-grid">
-          <div class="card">
-            <h3>For care providers</h3>
-            <p>
-              Access our client portal to request staff, outline your service needs and arrange a call
-              to discuss how we can support you.
-            </p>
-            <a href="providers.html#staff-request" class="btn btn-primary" style="margin-top:.6rem;">
-              Go to client portal
-            </a>
+  <!-- CALL TO ACTION -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Next steps</div>
+        <h2 class="section-title">Ready to work with Unity Healthcare Staffing?</h2>
+        <p class="section-subtitle">
+          Whether you’re a provider looking for agency staff or a healthcare professional looking
+          for flexible work, we’d be pleased to hear from you.
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>For care providers</h3>
+          <p>
+            Access our client portal to request staff, outline your service needs and arrange a call
+            to discuss how we can support you.
+          </p>
+          <a href="providers.html#staff-request" class="btn btn-primary" style="margin-top:0.5rem; display:inline-block;">
+            Go to client portal
+          </a>
+        </div>
+
+        <div class="card">
+          <h3>For healthcare professionals</h3>
+          <p>
+            Register your interest in joining the Unity Healthcare Staffing team as a Healthcare
+            Assistant, Support Worker or Registered Nurse.
+          </p>
+          <a href="staff.html" class="btn btn-outline" style="margin-top:0.5rem; display:inline-block;">
+            Apply to join our staff bank
+          </a>
+
+          <!-- ✅ NEW: App download + QR (paths unchanged) -->
+          <div style="margin-top:0.85rem; font-size:0.85rem; color:#6b7b93;">
+            Prefer the mobile app on Android?
           </div>
 
-          <div class="card">
-            <h3>For healthcare professionals</h3>
-            <p>
-              Register your interest in joining the Unity Healthcare Staffing team as a Healthcare
-              Assistant, Support Worker or Registered Nurse.
-            </p>
-
-            <a href="staff.html" class="btn btn-outline" style="margin-top:.6rem;">
-              Apply to join our staff bank
+          <div class="qr-row">
+            <a href="unity-healthcare-staffing-v1.apk" class="btn btn-primary" download style="display:inline-block;">
+              Download Android app
             </a>
 
-            <div class="qr-wrap">
-              <div>
-                <div style="font-weight:900; color:var(--dark); margin-bottom:.25rem;">
-                  Prefer the mobile app on Android?
-                </div>
-
-                <a class="btn btn-primary" href="unity-healthcare-staffing-v1.apk" download>
-                  Download Android app
-                </a>
-
-                <div style="font-size:.8rem; color:#6b7b93; margin-top:.45rem; max-width:360px;">
-                  Scan the QR code on your Android phone or tap “Download Android app”.
-                  You may need to allow installs from this source when prompted.
-                </div>
-              </div>
-
-              <div class="qr-card" aria-label="QR code for Android app download">
-                <img class="qr-img" src="assets/qr.png" alt="QR code to download Unity Healthcare Staffing APK">
-                <div class="qr-logo-bg" aria-hidden="true"></div>
-                <img class="qr-logo" src="assets/logo.png" alt="Unity Healthcare Staffing logo">
-              </div>
+            <div class="qr-box" aria-label="QR code for Android app download">
+              <img class="qr-img" src="assets/qr.png" alt="QR code to download Unity Healthcare Staffing APK">
+              <div class="qr-logo-bg" aria-hidden="true"></div>
+              <img class="qr-logo" src="assets/logo.png" alt="Unity Healthcare Staffing logo">
             </div>
+          </div>
+
+          <div style="margin-top:0.35rem; font-size:0.78rem; color:#7a8ba3;">
+            Scan the QR code on your Android phone or tap “Download Android app”.
+            You may need to allow installs from this source when prompted.
           </div>
         </div>
       </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> Unity Healthcare Staffing Ltd. All rights reserved.</div>
-      <div>Company Number: 16863419 · Registered in England & Wales</div>
     </div>
-  </footer>
+  </section>
+</main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<footer>
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Unity Healthcare Staffing Ltd. All rights reserved.</div>
+    <div>Company Number: 16863419 · Registered in England & Wales</div>
+  </div>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
