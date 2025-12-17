@@ -214,10 +214,10 @@
       color: var(--primary);
     }
 
-    /* ✅ NEW: banner background for hero (does not change your content) */
+    /* ✅ Banner image (less transparent overlay) */
     .hero.has-banner {
       background:
-        linear-gradient(90deg, rgba(245,247,251,.96), rgba(245,247,251,.86)),
+        linear-gradient(90deg, rgba(245,247,251,.88), rgba(245,247,251,.72)),
         url("assets/banner.png") center/cover no-repeat;
     }
 
@@ -290,7 +290,7 @@
       color: var(--accent);
     }
 
-    /* ✅ NEW: services image strip (uses your 3 images; crops out labels) */
+    /* ✅ Services images strip (cropped so labels don’t show) */
     .service-images {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -310,16 +310,16 @@
 
     .service-img-frame {
       height: 220px;
-      overflow: hidden; /* crops bottom text on the image */
+      overflow: hidden;
       position: relative;
       background: #000;
     }
 
     .service-img-frame img {
       width: 100%;
-      height: 300px;              /* taller than frame => crop */
+      height: 300px;
       object-fit: cover;
-      object-position: center 15%; /* shows upper part, hides bottom label */
+      object-position: center 14%;
       transform: scale(1.02);
       display: block;
     }
@@ -327,7 +327,7 @@
     .service-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.60));
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.58));
       pointer-events: none;
     }
 
@@ -352,7 +352,7 @@
       opacity: 0.95;
     }
 
-    /* ✅ NEW: QR block + branded overlay (no path changes) */
+    /* ✅ QR restored (simple + working) */
     .qr-row {
       display: flex;
       align-items: center;
@@ -361,46 +361,15 @@
       margin-top: 0.75rem;
     }
 
-    .qr-box {
-      width: 170px;
-      height: 170px;
-      position: relative;
-      border-radius: 1rem;
+    .qr-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 0.9rem;
       border: 1px solid #e3e9f3;
       background: #fff;
-      padding: 0.55rem;
+      padding: 0.5rem;
       box-shadow: 0 10px 22px rgba(15, 35, 52, 0.08);
-    }
-
-    .qr-box img.qr-img {
-      width: 100%;
-      height: 100%;
       object-fit: contain;
-    }
-
-    .qr-box .qr-logo-bg {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 54px;
-      height: 54px;
-      transform: translate(-50%, -50%);
-      background: #fff;
-      border-radius: 999px;
-      border: 1px solid #e3e9f3;
-      box-shadow: 0 8px 18px rgba(15,35,52,.12);
-    }
-
-    .qr-box img.qr-logo {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 38px;
-      height: 38px;
-      transform: translate(-50%, -50%);
-      object-fit: contain;
-      border-radius: 10px;
-      background: #fff;
     }
 
     footer {
@@ -451,9 +420,9 @@
       <a href="providers.html">For Providers</a>
       <a href="staff.html">For Staff</a>
       <a href="providers.html#contact">Contact</a>
-      <a href="providers.html#staff-request" class="btn btn-outline">Client Portal</a>
+      <a href="https://app.unityhealthcarestaffing.co.uk/" class="btn btn-outline">Client Portal</a>
     </nav>
-    <a href="providers.html#staff-request" class="btn btn-primary">Book Staff</a>
+    <a href="https://app.unityhealthcarestaffing.co.uk/" class="btn btn-primary">Book Staff</a>
     <a href="policies.html">Policies</a>
   </div>
 </header>
@@ -473,8 +442,8 @@
           across England & Wales – with a focus on quality, reliability and dignity in care.
         </p>
         <div class="hero-cta">
-          <a href="providers.html#staff-request" class="btn btn-primary">Request staff today</a>
-          <a href="staff.html" class="btn btn-outline">Join our staff bank</a>
+          <a href="https://app.unityhealthcarestaffing.co.uk/" class="btn btn-primary">Request staff today</a>
+          <a href="https://app.unityhealthcarestaffing.co.uk/" class="btn btn-outline">Join our staff bank</a>
         </div>
         <div class="hero-meta">
           <span>Based in Bangor, serving England & Wales</span>
@@ -551,7 +520,7 @@
         </p>
       </div>
 
-      <!-- ✅ NEW: image strip (does not remove your existing service cards) -->
+      <!-- Images strip -->
       <div class="service-images">
         <div class="service-img-card">
           <div class="service-img-frame">
@@ -587,7 +556,6 @@
         </div>
       </div>
 
-      <!-- Your original 3 cards remain exactly as-is -->
       <div class="grid grid-3">
         <div class="card">
           <span class="pill">Care & Support Staff</span>
@@ -636,7 +604,7 @@
             Access our client portal to request staff, outline your service needs and arrange a call
             to discuss how we can support you.
           </p>
-          <a href="providers.html#staff-request" class="btn btn-primary" style="margin-top:0.5rem; display:inline-block;">
+          <a href="https://app.unityhealthcarestaffing.co.uk/" class="btn btn-primary" style="margin-top:0.5rem; display:inline-block;">
             Go to client portal
           </a>
         </div>
@@ -647,11 +615,11 @@
             Register your interest in joining the Unity Healthcare Staffing team as a Healthcare
             Assistant, Support Worker or Registered Nurse.
           </p>
-          <a href="staff.html" class="btn btn-outline" style="margin-top:0.5rem; display:inline-block;">
+          <a href="https://app.unityhealthcarestaffing.co.uk/" class="btn btn-outline" style="margin-top:0.5rem; display:inline-block;">
             Apply to join our staff bank
           </a>
 
-          <!-- ✅ NEW: App download + QR (paths unchanged) -->
+          <!-- ✅ QR restored (simple) + APK link preserved -->
           <div style="margin-top:0.85rem; font-size:0.85rem; color:#6b7b93;">
             Prefer the mobile app on Android?
           </div>
@@ -660,12 +628,7 @@
             <a href="unity-healthcare-staffing-v1.apk" class="btn btn-primary" download style="display:inline-block;">
               Download Android app
             </a>
-
-            <div class="qr-box" aria-label="QR code for Android app download">
-              <img class="qr-img" src="assets/qr.png" alt="QR code to download Unity Healthcare Staffing APK">
-              <div class="qr-logo-bg" aria-hidden="true"></div>
-              <img class="qr-logo" src="assets/logo.png" alt="Unity Healthcare Staffing logo">
-            </div>
+            <img class="qr-img" src="assets/qr.png" alt="QR code to download Unity Healthcare Staffing APK">
           </div>
 
           <div style="margin-top:0.35rem; font-size:0.78rem; color:#7a8ba3;">
