@@ -5,7 +5,6 @@
   <title>For Providers | Unity Healthcare Staffing Ltd</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Unity Healthcare Staffing Ltd provides agency care and nursing staff for care homes, supported living, hospitals and community services across England & Wales." />
-
   <style>
     :root {
       --primary: #0b4f6c;
@@ -36,6 +35,10 @@
       padding: 0.45rem 0.5rem;
     }
 
+    .top-banner span {
+      font-weight: 600;
+    }
+
     header {
       background: white;
       border-bottom: 1px solid #e1e7f0;
@@ -45,6 +48,7 @@
     }
 
     .container {
+      width: 100%;
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.25rem;
@@ -81,60 +85,82 @@
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 1.2rem;
       font-size: 0.95rem;
+      flex-wrap: wrap;
     }
 
-    .nav-links a:hover { color: var(--primary); }
+    .nav-links a {
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--primary);
+    }
 
     .btn {
       display: inline-block;
       padding: 0.65rem 1.3rem;
       border-radius: 999px;
+      border: none;
+      cursor: pointer;
       font-size: 0.95rem;
       font-weight: 600;
-      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
       text-align: center;
+      white-space: nowrap;
     }
 
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      box-shadow: 0 8px 18px rgba(11,79,108,.22);
+      box-shadow: 0 8px 18px rgba(11, 79, 108, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: #093b50;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(11, 79, 108, 0.28);
     }
 
     .btn-outline {
-      background: #fff;
+      background: white;
       border: 1px solid #cbd2e1;
       color: var(--primary);
     }
 
-    /* HERO */
-    .hero {
-      padding: 2.4rem 0;
-      background: white;
+    .btn-outline:hover {
+      background: var(--primary-light);
     }
+
+    /* HERO */
+    .hero { padding: 2.4rem 0 2rem; background: white; }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0,1.4fr) minmax(0,1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 2rem;
       align-items: center;
     }
 
     .hero-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       padding: 0.3rem 0.75rem;
       border-radius: 999px;
-      background: var(--primary-light);
-      color: var(--primary);
-      font-size: 0.78rem;
-      font-weight: 700;
+      background: #ecf7f5;
+      color: var(--accent);
+      font-size: 0.8rem;
       margin-bottom: 0.75rem;
+      font-weight: 700;
     }
 
     .hero-title {
-      font-size: clamp(2rem, 3.2vw, 2.6rem);
+      font-size: clamp(2.0rem, 3.2vw, 2.6rem);
       font-weight: 800;
       color: var(--dark);
       margin-bottom: 0.75rem;
@@ -143,23 +169,23 @@
     .hero-text {
       font-size: 0.98rem;
       max-width: 540px;
+      margin-bottom: 1.25rem;
       color: #526581;
-      margin-bottom: 1.2rem;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 1.25rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #7a8ba3;
     }
 
     .hero-card {
       background: white;
       border-radius: 1.25rem;
-      padding: 1.25rem;
-      box-shadow: 0 14px 38px rgba(15,35,52,.09);
+      padding: 1.25rem 1.1rem;
+      box-shadow: 0 14px 38px rgba(15, 35, 52, 0.09);
       border: 1px solid #e5ebf4;
     }
 
@@ -173,19 +199,21 @@
     .hero-stat {
       display: flex;
       justify-content: space-between;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       margin-bottom: 0.45rem;
+      gap: 0.8rem;
     }
 
     .hero-stat span:last-child {
       font-weight: 700;
       color: var(--primary);
+      text-align: right;
     }
 
-    section { padding: 2.6rem 0; }
-    section:nth-of-type(even) { background: white; }
+    section { padding: 2.5rem 0; }
+    section:nth-of-type(odd) { background: white; }
 
-    .section-header { margin-bottom: 1.25rem; }
+    .section-header { margin-bottom: 1.25rem; text-align: left; }
 
     .section-kicker {
       font-size: 0.78rem;
@@ -210,16 +238,23 @@
     }
 
     .grid { display: grid; gap: 1rem; }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     .card {
       background: white;
       border-radius: 1.2rem;
       padding: 1rem;
       border: 1px solid #e3e9f3;
-      box-shadow: 0 6px 18px rgba(15,35,52,.06);
+      box-shadow: 0 6px 18px rgba(15, 35, 52, 0.06);
       font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 750;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
     }
 
     .pill {
@@ -245,10 +280,10 @@
       font-weight: 900;
     }
 
-    /* BOOKING STEPS */
+    /* ---- NEW: How booking works strip ---- */
     .steps {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
       margin-top: 1.25rem;
     }
@@ -259,6 +294,7 @@
       padding: 1rem;
       border: 1px solid #e3e9f3;
       box-shadow: 0 8px 20px rgba(15,35,52,.06);
+      font-size: 0.9rem;
     }
 
     .step-number {
@@ -274,10 +310,10 @@
       margin-bottom: 0.5rem;
     }
 
-    /* UNIFORM IMAGES */
+    /* ---- NEW: Uniform image section ---- */
     .uniform-grid {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
       margin-top: 1.25rem;
     }
@@ -287,17 +323,92 @@
       overflow: hidden;
       border: 1px solid #e3e9f3;
       box-shadow: 0 10px 26px rgba(15,35,52,.08);
+      background: #0b4f6c;
+      position: relative;
+      min-height: 220px;
     }
 
     .uniform-tile img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
-    /* FIX ANCHOR */
-    #staff-request {
-      scroll-margin-top: 90px;
+    .uniform-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+      color: rgba(255,255,255,0.92);
+      font-weight: 700;
+      background: linear-gradient(180deg, rgba(11,79,108,0.65) 0%, rgba(11,79,108,0.85) 100%);
+      pointer-events: none;
+    }
+
+    /* Contact grid + forms (unchanged) */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    form {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.1rem;
+      border: 1px solid #e3e9f3;
+      box-shadow: 0 10px 26px rgba(15, 35, 52, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .field { margin-bottom: 0.75rem; }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      margin-bottom: 0.3rem;
+      color: #627089;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.55rem 0.65rem;
+      border-radius: 0.65rem;
+      border: 1px solid #ccd4e4;
+      font: inherit;
+      background: #f9fbff;
+    }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: 2px solid rgba(11, 79, 108, 0.28);
+      border-color: var(--primary);
+      background: #fff;
+    }
+
+    .form-message {
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .form-message.success { color: #1ea896; }
+    .form-message.error { color: #c0392b; }
+
+    .contact-card { font-size: 0.9rem; }
+
+    .contact-line { margin-bottom: 0.4rem; }
+
+    .contact-label {
+      font-weight: 700;
+      color: var(--dark);
     }
 
     footer {
@@ -310,34 +421,42 @@
 
     .footer-inner {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       gap: 0.75rem;
-      flex-wrap: wrap;
+      align-items: center;
     }
+
+    /* ---- FIX: anchor offset for sticky header ---- */
+    #staff-request { scroll-margin-top: 92px; }
 
     @media (max-width: 800px) {
       .hero-inner,
       .grid-3,
       .grid-2,
+      .contact-grid,
       .steps,
       .uniform-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
+
       .nav-links { display: none; }
+      .hero { padding-top: 1.75rem; }
     }
   </style>
 </head>
-
 <body>
 
 <div class="top-banner">
-  Supporting care providers across <strong>England & Wales</strong> with dependable agency staff.
+  Now supplying agency staff across <span>England & Wales</span> – contact us to discuss your service.
 </div>
 
 <header>
   <div class="container nav">
     <div class="nav-left">
-      <div class="brand-logo"><img src="assets/logo.png" alt="Unity Healthcare Staffing Logo"></div>
+      <div class="brand-logo">
+        <img src="assets/logo.png" alt="Unity Healthcare Staffing Logo">
+      </div>
       <div class="brand-text">Unity Healthcare Staffing Ltd</div>
     </div>
     <nav class="nav-links">
@@ -345,97 +464,345 @@
       <a href="providers.html">For Providers</a>
       <a href="staff.html">For Staff</a>
       <a href="#contact">Contact</a>
+      <a href="#staff-request" class="btn btn-outline">Client Portal</a>
     </nav>
-    <a href="#staff-request" class="btn btn-primary">Request Staff</a>
+
+    <!-- FIXED: Request Staff button points to staff-request anchor -->
+    <a href="#staff-request" class="btn btn-primary" id="requestStaffBtn">Request Staff</a>
+
+    <a href="policies.html">Policies</a>
   </div>
 </header>
 
 <main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-badge">For care providers</div>
+        <h1 class="hero-title">
+          Agency care & nursing staff for services across England & Wales.
+        </h1>
+        <p class="hero-text">
+          We support care homes, nursing homes, supported living, mental health services,
+          hospitals and community projects with reliable agency staff who understand
+          the importance of safe, person-centred care.
+        </p>
+        <div class="hero-meta">
+          <span>Healthcare Assistants & Support Workers</span>
+          <span>Registered Nurses</span>
+          <span>Short-notice & planned cover</span>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="hero-card-title">At a glance</div>
+        <div class="hero-stat">
+          <span>Settings</span>
+          <span>Care, nursing, supported living, hospitals</span>
+        </div>
+        <div class="hero-stat">
+          <span>Coverage</span>
+          <span>England & Wales</span>
+        </div>
+        <div class="hero-stat">
+          <span>Company number</span>
+          <span>16863419</span>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container hero-inner">
-    <div>
-      <div class="hero-badge">For care providers</div>
-      <h1 class="hero-title">
-        Reliable staffing support when your service cannot afford gaps.
-      </h1>
-      <p class="hero-text">
-        We support care homes, supported living services, hospitals and community providers
-        with vetted, professional agency staff — even at short notice.
+  <!-- NEW: UNIFORM IMAGES -->
+  <section id="uniforms">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Professional presentation</div>
+        <h2 class="section-title">Staff in Unity-branded uniform</h2>
+        <p class="section-subtitle">
+          Clear identification and professional presentation helps residents, families and teams instantly know who is on duty.
+        </p>
+      </div>
+
+      <div class="uniform-grid">
+        <div class="uniform-tile">
+          <img
+            src="/assets/uniform-1.jpg"
+            alt="Unity Healthcare Staffing staff in branded uniform"
+            onerror="this.onerror=null; this.src='assets/logo.png'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="uniform-fallback" style="display:none;">
+            Upload your image to <b>/assets/uniform-1.jpg</b>
+          </div>
+        </div>
+
+        <div class="uniform-tile">
+          <img
+            src="/assets/uniform-2.jpg"
+            alt="Unity Healthcare Staffing staff in branded uniform"
+            onerror="this.onerror=null; this.src='assets/logo.png'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="uniform-fallback" style="display:none;">
+            Upload your image to <b>/assets/uniform-2.jpg</b>
+          </div>
+        </div>
+
+        <div class="uniform-tile">
+          <img
+            src="/assets/uniform-3.jpg"
+            alt="Unity Healthcare Staffing staff in branded uniform"
+            onerror="this.onerror=null; this.src='assets/logo.png'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="uniform-fallback" style="display:none;">
+            Upload your image to <b>/assets/uniform-3.jpg</b>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:0.75rem; font-size:0.82rem; color:#7a8ba3;">
+        Tip: Use file names exactly: <b>uniform-1.jpg</b>, <b>uniform-2.jpg</b>, <b>uniform-3.jpg</b> inside your <b>/assets</b> folder (case-sensitive on some hosts).
       </p>
-      <div class="hero-meta">
-        <span>Healthcare Assistants & Support Workers</span>
-        <span>Registered Nurses</span>
-        <span>Short-notice & planned cover</span>
+    </div>
+  </section>
+
+  <!-- NEW: HOW BOOKING WORKS (3 steps) -->
+  <section style="background: var(--primary-light);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Simple process</div>
+        <h2 class="section-title">How booking works</h2>
+        <p class="section-subtitle">
+          A straightforward process designed to reduce admin time and deliver dependable cover quickly.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Submit your request</h3>
+          <p>Tell us what cover you need, when, and where — including any specialist needs.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>We confirm availability</h3>
+          <p>We check our staff bank and confirm suitability, rates and booking details with you.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Staff attend and support</h3>
+          <p>A vetted, compliant professional arrives ready to work and support your team.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <aside class="hero-card">
-      <div class="hero-card-title">At a glance</div>
-      <div class="hero-stat"><span>Coverage</span><span>England & Wales</span></div>
-      <div class="hero-stat"><span>Staff types</span><span>Care · Support · Nursing</span></div>
-      <div class="hero-stat"><span>Company No.</span><span>16863419</span></div>
-    </aside>
-  </div>
-</section>
-
-<!-- UNIFORM IMAGES -->
-<section>
-  <div class="container">
-    <div class="section-header">
-      <div class="section-kicker">Professional standards</div>
-      <h2 class="section-title">Clear identification & professional presentation</h2>
-      <p class="section-subtitle">
-        Our staff attend shifts in clean, professional Unity-branded uniforms.
-      </p>
-    </div>
-
-    <div class="uniform-grid">
-      <div class="uniform-tile"><img src="assets/uniform-1.png" alt="Unity Healthcare Staffing uniform"></div>
-      <div class="uniform-tile"><img src="assets/uniform-2.png" alt="Unity Healthcare Staffing uniform"></div>
-      <div class="uniform-tile"><img src="assets/uniform-3.png" alt="Unity Healthcare Staffing uniform"></div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW BOOKING WORKS -->
-<section style="background: var(--primary-light);">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-kicker">Simple process</div>
-      <h2 class="section-title">How booking works</h2>
-      <p class="section-subtitle">
-        Designed to reduce admin time and get staff to you quickly.
-      </p>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Submit your request</h3>
-        <p>Tell us what cover you need, when, and where.</p>
+  <!-- SERVICES & SECTORS -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">How we can help</div>
+        <h2 class="section-title">Staffing solutions for your service</h2>
+        <p class="section-subtitle">
+          Whether you need one shift covering tonight or a longer-term arrangement, we’ll work with you
+          to understand your service, staffing model and budget so we can provide the right support.
+        </p>
       </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>We confirm availability</h3>
-        <p>We check staff suitability and confirm details with you.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Staff attend your service</h3>
-        <p>A vetted professional arrives ready to support your team.</p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <span class="pill">Care & Support Staff</span>
+          <h3>Healthcare Assistants & Support Workers</h3>
+          <p>
+            Staff experienced in personal care, daily living, observations and supporting people with
+            complex needs in a respectful, person-centred way.
+          </p>
+        </div>
+        <div class="card">
+          <span class="pill">Nursing</span>
+          <h3>Registered Nurses</h3>
+          <p>
+            NMC-registered nurses for day and night shifts, weekend cover and block bookings,
+            supporting your clinical leadership and safe staffing levels.
+          </p>
+        </div>
+        <div class="card">
+          <span class="pill">Uniforms & Professionalism</span>
+          <h3>Unity-branded uniforms</h3>
+          <p>
+            Our staff wear clear, consistent Unity-branded uniforms to help residents, families and
+            colleagues quickly identify who is on duty.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- STAFF REQUEST FORM (UNCHANGED) -->
-<section id="staff-request">
-  <!-- YOUR ORIGINAL STAFF REQUEST FORM SECTION REMAINS HERE EXACTLY AS BEFORE -->
-</section>
+  <!-- CLIENT PORTAL – STAFF REQUEST FORM -->
+  <section id="staff-request">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Client portal</div>
+        <h2 class="section-title">Staff request form</h2>
+        <p class="section-subtitle">
+          Use this form to request agency staff for your service. We will review your request and
+          contact you to confirm availability, rates and booking details.
+        </p>
+      </div>
 
-<!-- CONTACT + SCRIPTS REMAIN UNCHANGED BELOW -->
+      <div class="grid grid-2">
+        <form id="staffRequestForm">
+          <div class="field">
+            <label for="requestType">I am a…</label>
+            <select id="requestType" name="requestType" required>
+              <option value="Care home">Care home</option>
+              <option value="Nursing home">Nursing home</option>
+              <option value="Supported living">Supported living</option>
+              <option value="Mental health service">Mental health service</option>
+              <option value="Hospital">Hospital</option>
+              <option value="Homelessness / community project">Homelessness / community project</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="requestServiceName">Service / organisation name</label>
+            <input id="requestServiceName" name="serviceName" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="requestLocation">Service location (town / postcode)</label>
+            <input id="requestLocation" name="location" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="requestContactName">Contact name</label>
+            <input id="requestContactName" name="contactName" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="requestEmail">Contact email</label>
+            <input id="requestEmail" name="email" type="email" required />
+          </div>
+
+          <div class="field">
+            <label for="requestPhone">Contact phone</label>
+            <input id="requestPhone" name="phone" type="tel" required />
+          </div>
+
+          <div class="field">
+            <label for="requestStaffRoles">Staff required (roles)</label>
+            <textarea id="requestStaffRoles" name="staffRoles" placeholder="e.g. 2 x HCAs, 1 x Nurse for night shift" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="requestStaffCount">Approximate number of staff needed</label>
+            <input id="requestStaffCount" name="staffCount" type="number" min="1" required />
+          </div>
+
+          <div class="field">
+            <label for="requestShiftDetails">Dates and times</label>
+            <textarea id="requestShiftDetails" name="shiftDetails" placeholder="e.g. 12-hour nights for 3 nights from 10/12/2025, 20:00–08:00" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="requestNotes">Additional information</label>
+            <textarea id="requestNotes" name="notes" placeholder="Any clinical needs, 1:1 observations, behavioural risks, language needs, etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Submit staff request</button>
+          <p id="staffRequestFormMessage" class="form-message"></p>
+        </form>
+
+        <div class="card">
+          <h3>After you submit this form</h3>
+          <ul class="list">
+            <li>We review your request and staffing needs.</li>
+            <li>We check availability from our staff bank.</li>
+            <li>We contact you to confirm details, rates and any compliance requirements.</li>
+          </ul>
+          <p style="margin-top:0.4rem;">
+            For urgent same-day cover, please phone us directly so we can respond as quickly as possible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (CLIENT ENQUIRY FORM) -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">General enquiries</div>
+        <h2 class="section-title">Talk to us about your service</h2>
+        <p class="section-subtitle">
+          If you’d like to discuss our services, framework agreements or longer-term staffing
+          solutions, please use this enquiry form or contact us directly.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <form id="clientForm">
+          <div class="field">
+            <label for="type">I am a…</label>
+            <select id="type" name="type" required>
+              <option value="care-provider">Care provider / manager</option>
+              <option value="professional">Healthcare professional</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="clientName">Name</label>
+            <input id="clientName" name="name" type="text" placeholder="Your full name" required />
+          </div>
+          <div class="field">
+            <label for="clientEmail">Email</label>
+            <input id="clientEmail" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="clientPhone">Phone</label>
+            <input id="clientPhone" name="phone" type="tel" placeholder="+44..." required />
+          </div>
+          <div class="field">
+            <label for="serviceName">Service / organisation name (if applicable)</label>
+            <input id="serviceName" name="serviceName" type="text" />
+          </div>
+          <div class="field">
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" placeholder="Tell us about your staffing needs or enquiry" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send enquiry</button>
+          <p id="clientFormMessage" class="form-message"></p>
+        </form>
+
+        <div class="contact-card">
+          <div class="contact-line">
+            <span class="contact-label">Company:</span> Unity Healthcare Staffing Ltd
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Company Number:</span> 16863419
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Registered Office:</span>
+            1 Pen Castell, Bangor, Wales, LL57 1NX
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Phone:</span> +44 7542 123 984
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Email:</span> info@unityhealthcarestaffing.co.uk
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Service area:</span> England & Wales
+          </div>
+          <p style="margin-top:0.75rem;font-size:0.82rem;color:#7f8ba2;">
+            For urgent staffing needs, please call us directly so we can respond as quickly as possible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
   <div class="container footer-inner">
@@ -444,7 +811,202 @@
   </div>
 </footer>
 
+<!-- EmailJS (for email notifications) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+  // Your real EmailJS public key
+  emailjs.init("mMnrdgI8GnIyrpAqA");
+</script>
+
+<!-- Firebase + Firestore + EmailJS integration -->
+<script type="module">
+  const firebaseConfig = {
+    apiKey: "AIzaSyBe6amsLWa7o-Hp2Zwvn0dpjxfQ9ldbUUU",
+    authDomain: "unity-healthcare-staffing.firebaseapp.com",
+    projectId: "unity-healthcare-staffing",
+    storageBucket: "unity-healthcare-staffing.firebasestorage.app",
+    messagingSenderId: "559193698848",
+    appId: "1:559193698848:web:8426c72a1749d0c7770245",
+    measurementId: "G-J5L3RT870C"
+  };
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Bulletproof scroll for Request Staff button + any link to #staff-request
+  const scrollToStaffRequest = (e) => {
+    const href = e?.currentTarget?.getAttribute?.("href");
+    if (href !== "#staff-request") return;
+    e.preventDefault();
+    const el = document.getElementById("staff-request");
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", "#staff-request");
+  };
+
+  document.querySelectorAll('a[href="#staff-request"]').forEach((a) => {
+    a.addEventListener("click", scrollToStaffRequest);
+  });
+
+  // Client form (general enquiries)
+  const clientForm = document.getElementById("clientForm");
+  const clientFormMessage = document.getElementById("clientFormMessage");
+
+  if (clientForm) {
+    clientForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      clientFormMessage.textContent = "";
+      clientFormMessage.className = "form-message";
+
+      const formData = new FormData(clientForm);
+      const payload = {
+        who: formData.get("type"),
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        serviceName: formData.get("serviceName"),
+        message: formData.get("message"),
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        // 1. Save to Firestore
+        await addDoc(collection(db, "enquiries"), payload);
+
+        // 2. Build a rich message for the email template
+        const messageText = `
+Client Enquiry Details:
+
+Name: ${payload.name}
+Email: ${payload.email}
+Phone: ${payload.phone}
+Service/Organisation: ${payload.serviceName || "-"}
+Type: ${payload.who}
+
+Message:
+${payload.message}
+        `;
+
+        // 3. Send email via EmailJS
+        try {
+          await emailjs.send(
+            "service_5k6rvri",
+            "template_sh3ysl3",
+            {
+              from_name: payload.name,
+              from_email: payload.email,
+              from_phone: payload.phone,
+              service_name: payload.serviceName || "-",
+              who: payload.who,
+              message: messageText,
+              time: new Date().toLocaleString()
+            }
+          );
+          console.log("EmailJS: client enquiry email sent");
+        } catch (emailError) {
+          console.error("EmailJS error (client enquiry):", emailError);
+        }
+
+        // 4. Redirect to thank you page
+        window.location.href = "thankyou.html";
+      } catch (error) {
+        console.error("Error saving enquiry:", error);
+        clientFormMessage.textContent =
+          "Sorry, something went wrong. Please try again or email us directly.";
+        clientFormMessage.classList.add("error");
+      }
+    });
+  }
+
+  // Staff request form (Client Portal)
+  const staffRequestForm = document.getElementById("staffRequestForm");
+  const staffRequestFormMessage = document.getElementById("staffRequestFormMessage");
+
+  if (staffRequestForm) {
+    staffRequestForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      staffRequestFormMessage.textContent = "";
+      staffRequestFormMessage.className = "form-message";
+
+      const formData = new FormData(staffRequestForm);
+      const payload = {
+        requestType: formData.get("requestType"),
+        serviceName: formData.get("serviceName"),
+        location: formData.get("location"),
+        contactName: formData.get("contactName"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        staffRoles: formData.get("staffRoles"),
+        staffCount: formData.get("staffCount"),
+        shiftDetails: formData.get("shiftDetails"),
+        notes: formData.get("notes"),
+        createdAt: serverTimestamp()
+      };
+
+      try {
+        // 1. Save to Firestore
+        await addDoc(collection(db, "staffRequests"), payload);
+
+        // 2. Build email text for staff request
+        const requestMessageText = `
+New Staff Request
+
+Service type: ${payload.requestType}
+Service / organisation: ${payload.serviceName}
+Location: ${payload.location}
+
+Contact:
+- Name: ${payload.contactName}
+- Email: ${payload.email}
+- Phone: ${payload.phone}
+
+Staff required:
+${payload.staffRoles}
+
+Approximate number of staff: ${payload.staffCount}
+
+Dates and times:
+${payload.shiftDetails}
+
+Additional information:
+${payload.notes || "-"}
+        `;
+
+        // 3. Send email via EmailJS
+        try {
+          await emailjs.send(
+            "service_5k6rvri",
+            "template_sh3ysl3",
+            {
+              from_name: payload.contactName,
+              from_email: payload.email,
+              from_phone: payload.phone,
+              service_name: payload.serviceName,
+              who: `Staff request – ${payload.requestType}`,
+              message: requestMessageText,
+              time: new Date().toLocaleString()
+            }
+          );
+          console.log("EmailJS: staff request email sent");
+        } catch (emailError) {
+          console.error("EmailJS error (staff request):", emailError);
+        }
+
+        // 4. Redirect to thank you page
+        window.location.href = "thankyou.html";
+      } catch (error) {
+        console.error("Error saving staff request:", error);
+        staffRequestFormMessage.textContent =
+          "Sorry, something went wrong. Please try again or email us directly.";
+        staffRequestFormMessage.classList.add("error");
+      }
+    });
+  }
+
+  // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
