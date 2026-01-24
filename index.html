@@ -37,8 +37,7 @@
       position: relative;
       z-index: 30;
     }
-
-    .top-banner span { font-weight: 600; }
+    .top-banner span { font-weight: 700; }
 
     header {
       background: white;
@@ -136,10 +135,9 @@
       border: 1px solid #cbd2e1;
       color: var(--primary);
     }
-
     .btn-outline:hover { background: var(--primary-light); }
 
-    /* NEW: small contact pill in header */
+    /* Small contact pill in header */
     .header-contact {
       display: inline-flex;
       align-items: center;
@@ -152,12 +150,11 @@
       font-size: 0.9rem;
       white-space: nowrap;
     }
-
     .header-contact strong { color: var(--primary); font-weight: 800; }
     .header-contact a { color: var(--primary); font-weight: 800; }
     .header-contact a:hover { text-decoration: underline; }
 
-    /* HERO with real banner image (keeps original paths) */
+    /* HERO */
     .hero {
       padding: 2.25rem 0 2rem;
     }
@@ -182,7 +179,6 @@
       filter: saturate(1.02);
     }
 
-    /* Dark overlay to keep text readable */
     .hero-banner::after {
       content: "";
       position: absolute;
@@ -215,6 +211,51 @@
       margin-bottom: 0.75rem;
       border: 1px solid rgba(191, 244, 236, 0.18);
       width: fit-content;
+    }
+
+    /* NEW: Animated client registration banner (lightweight) */
+    .client-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 0.95rem;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(229,235,244,0.95);
+      box-shadow: 0 14px 30px rgba(15, 35, 52, 0.10);
+      color: var(--dark);
+      margin: 0.25rem 0 0.9rem;
+      max-width: 640px;
+      backdrop-filter: blur(6px);
+      animation: bannerFloat 3.2s ease-in-out infinite;
+    }
+
+    .client-banner strong { color: var(--primary); }
+    .client-banner .dot {
+      width: 10px; height: 10px; border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(30,168,150,0.55);
+      animation: pulseDot 1.6s ease-out infinite;
+      flex: 0 0 auto;
+    }
+
+    .client-banner a {
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+
+    @keyframes bannerFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    @keyframes pulseDot {
+      0% { box-shadow: 0 0 0 0 rgba(30,168,150,0.55); }
+      70% { box-shadow: 0 0 0 10px rgba(30,168,150,0); }
+      100% { box-shadow: 0 0 0 0 rgba(30,168,150,0); }
     }
 
     .hero-title {
@@ -283,7 +324,6 @@
       text-align: right;
     }
 
-    /* Sections */
     section { padding: 2.5rem 0; }
     section:nth-of-type(odd) { background: white; }
 
@@ -354,7 +394,6 @@
       font-weight: 900;
     }
 
-    /* Image tiles (crop out baked-in labels on images) */
     .tile {
       position: relative;
       border-radius: 1.2rem;
@@ -369,12 +408,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* Crop downwards to remove the built-in bottom labels like "Community" */
       object-position: center 20%;
       transform: scale(1.03);
     }
 
-    /* Subtle dark overlay for readability of OUR text (not the image label) */
     .tile::after {
       content: "";
       position: absolute;
@@ -433,6 +470,7 @@
         background:
           linear-gradient(180deg, rgba(16,42,67,0.80) 0%, rgba(16,42,67,0.55) 60%, rgba(16,42,67,0.40) 100%);
       }
+      .client-banner { max-width: 100%; }
     }
 
     @media (max-width: 800px) {
@@ -440,6 +478,8 @@
       .nav-links { display: none; }
       .hero-inner { padding: 1.6rem 1.15rem; }
       .header-contact { width: 100%; justify-content: center; }
+      .client-banner { width: 100%; }
+      .client-banner a { white-space: normal; }
     }
   </style>
 </head>
@@ -447,7 +487,7 @@
 <body>
 
 <div class="top-banner">
-  Now supplying agency staff across <span>England & Wales</span> – contact us to discuss your service.
+  Fast, reliable staffing support across <span>England & Wales</span> — register today and we’ll prioritise your requests.
 </div>
 
 <header>
@@ -474,7 +514,6 @@
       </a>
     </nav>
 
-    <!-- NEW: Phone in header -->
     <div class="header-contact" aria-label="Contact phone">
       <span>Call:</span>
       <a href="tel:+447542123984"><strong>+44 7542 123 984</strong></a>
@@ -494,21 +533,30 @@
 </header>
 
 <main>
-  <!-- HERO (uses assets/banner.png; text is guaranteed readable) -->
   <section class="hero">
     <div class="container">
       <div class="hero-banner">
         <div class="hero-inner">
           <div>
             <div class="hero-badge">Healthcare staffing for England & Wales</div>
+
+            <!-- NEW animated banner -->
+            <div class="client-banner" role="note" aria-label="Client registration prompt">
+              <span class="dot" aria-hidden="true"></span>
+              <span><strong>Providers:</strong> register your service once, then request staff in minutes.</span>
+              <a href="https://app.unityhealthcarestaffing.co.uk" target="_blank" rel="noopener noreferrer">Register / Book now</a>
+            </div>
+
             <h1 class="hero-title">
-              Reliable <span>care & nursing staff</span> when you need them most.
+              Rapid, reliable <span>care & nursing staff</span> — when rota gaps can’t wait.
             </h1>
+
             <p class="hero-text">
-              Unity Healthcare Staffing Ltd supplies carefully vetted, compassionate healthcare workers
-              and nurses to care homes, supported living services, hospitals and community providers
-              across England & Wales – with a focus on quality, reliability and dignity in care.
+              Unity Healthcare Staffing Ltd supplies carefully vetted healthcare assistants, support workers and nurses
+              to care homes, supported living services, hospitals and community providers across England & Wales —
+              with a focus on quality, compliance and consistent standards on every shift.
             </p>
+
             <div class="hero-cta">
               <a
                 href="https://app.unityhealthcarestaffing.co.uk"
@@ -516,7 +564,7 @@
                 rel="noopener noreferrer"
                 class="btn btn-primary"
               >
-                Request staff today
+                Register & request staff
               </a>
               <a
                 href="https://app.unityhealthcarestaffing.co.uk"
@@ -527,10 +575,12 @@
                 Join our staff bank
               </a>
             </div>
+
+            <!-- UPDATED (removed “Based in Bangor”) -->
             <div class="hero-meta">
-              <span>Based in Bangor, serving England & Wales</span>
+              <span>England & Wales coverage · Fast response support</span>
               <span>Care & support staff · Nurses</span>
-              <span>Branded uniforms & compliance-focused</span>
+              <span>Compliance-first · Professional presentation</span>
             </div>
           </div>
 
@@ -558,15 +608,15 @@
     </div>
   </section>
 
-  <!-- IMAGE COVERAGE (uses your new images; crops out built-in labels) -->
+  <!-- IMAGE COVERAGE -->
   <section id="coverage">
     <div class="container">
       <div class="section-header">
         <div class="section-kicker">Where we support</div>
         <h2 class="section-title">Care settings we cover</h2>
         <p class="section-subtitle">
-          We provide reliable agency staff across care homes, supported living services,
-          hospitals and community care — with professional presentation and compliance-first delivery.
+          Reliable staffing across care homes, supported living, hospitals and community care — with clear communication,
+          compliance checks and dependable shift fulfilment.
         </p>
       </div>
 
@@ -603,21 +653,19 @@
     <div class="container">
       <div class="section-header">
         <div class="section-kicker">Who we are</div>
-        <h2 class="section-title">A values-led healthcare staffing partner</h2>
+        <h2 class="section-title">A quality-led healthcare staffing partner</h2>
         <p class="section-subtitle">
-          Unity Healthcare Staffing Ltd is led by an experienced healthcare worker and chartered
-          management professional, combining frontline care experience with strong governance,
-          financial oversight and a genuine passion for quality.
+          Unity Healthcare Staffing Ltd combines frontline care experience with strong governance,
+          compliance focus and professional standards — supporting providers to maintain safe, consistent care.
         </p>
       </div>
 
       <div class="grid grid-2">
         <div class="card">
-          <h3>Our mission</h3>
+          <h3>Our promise to providers</h3>
           <p>
-            To support health and social care providers with reliable, well-presented and
-            well-supported staff, so that residents, patients and service users receive safe,
-            compassionate and consistent care – every shift.
+            Clear communication, dependable shift fulfilment and staff who understand professional conduct,
+            safeguarding and dignity in care — so your service can run smoothly, even under pressure.
           </p>
         </div>
 
@@ -639,10 +687,10 @@
     <div class="container">
       <div class="section-header">
         <div class="section-kicker">What we do</div>
-        <h2 class="section-title">Staffing solutions tailored to your service</h2>
+        <h2 class="section-title">Staffing support that reduces rota pressure</h2>
         <p class="section-subtitle">
-          We provide healthcare assistants, support workers and nurses to cover gaps in rotas,
-          respond to unplanned absences and support long-term staffing strategies.
+          Cover short notice gaps, planned leave and ongoing requirements with vetted staff and a process designed for speed,
+          compliance and reliability.
         </p>
       </div>
 
@@ -651,8 +699,8 @@
           <span class="pill">Care & Support Staff</span>
           <h3>Healthcare Assistants & Support Workers</h3>
           <p>
-            Compassionate, experienced staff to support with personal care, daily living,
-            social inclusion and wellbeing in residential and community settings.
+            Experienced staff to support personal care, daily living, social inclusion and wellbeing —
+            across residential and community settings.
           </p>
         </div>
 
@@ -661,23 +709,23 @@
           <h3>Registered Nurses</h3>
           <p>
             Qualified nurses for temporary cover, nights, weekends or ongoing block bookings,
-            helping you maintain safe clinical standards.
+            supporting safe staffing levels and clinical standards.
           </p>
         </div>
 
         <div class="card">
-          <span class="pill">Uniforms & Presentation</span>
-          <h3>Branded uniforms & workwear</h3>
+          <span class="pill">Presentation & Standards</span>
+          <h3>Professional conduct & workwear</h3>
           <p>
-            Professional Unity-branded uniforms for our staff, supporting a consistent, confident
-            and reassuring presence in your service.
+            A consistent, professional presence with clear expectations around punctuality, communication,
+            documentation and respectful care.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- OPTIONAL: collage image (cropped similarly) -->
+  <!-- GALLERY -->
   <section id="gallery">
     <div class="container">
       <div class="section-header">
@@ -692,7 +740,7 @@
         <img src="assets/pictures.png" alt="Collage of healthcare staffing settings">
         <div class="tile-content">
           <div class="tile-title">Reliable staffing, every shift</div>
-          <div class="tile-sub">Quality-focused recruitment · Compliance · Great communication.</div>
+          <div class="tile-sub">Compliance · Communication · Quality-focused delivery.</div>
         </div>
       </div>
     </div>
@@ -703,10 +751,10 @@
     <div class="container">
       <div class="section-header">
         <div class="section-kicker">Next steps</div>
-        <h2 class="section-title">Ready to work with Unity Healthcare Staffing?</h2>
+        <h2 class="section-title">Ready to register and start booking?</h2>
         <p class="section-subtitle">
-          Whether you’re a provider looking for agency staff or a healthcare professional looking
-          for flexible work, we’d be pleased to hear from you.
+          Providers can register once and request staff quickly. Healthcare professionals can apply to join our staff bank
+          for flexible work.
         </p>
       </div>
 
@@ -714,8 +762,7 @@
         <div class="card">
           <h3>For care providers</h3>
           <p>
-            Access our client portal to request staff, outline your service needs and arrange a call
-            to discuss how we can support you.
+            Register your service, request staff, and manage bookings through our client portal.
           </p>
           <a
             href="https://app.unityhealthcarestaffing.co.uk"
@@ -724,7 +771,7 @@
             class="btn btn-primary"
             style="margin-top:0.5rem; display:inline-block;"
           >
-            Go to client portal
+            Register & request staff
           </a>
         </div>
 
@@ -745,7 +792,7 @@
             Apply to join our staff bank
           </a>
 
-          <!-- Android app download + QR -->
+          <!-- Android app download + QR (UNCHANGED) -->
           <div style="margin-top:1rem;">
             <p style="font-size:0.85rem; color:#526581; margin-bottom:0.4rem;">
               Prefer the mobile app on Android?
@@ -760,7 +807,7 @@
               </a>
               <div>
                 <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Funityhealthcarestaffing.co.uk%2Funity-healthcare-staffing-v1.apk"
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2Funityhealthcarestaffing.co.uk%2Funity-healthcare-staffing-v1.apk"
                   alt="QR code to download Unity Healthcare Staffing Android app"
                   style="width:130px;height:130px;border-radius:0.75rem;border:1px solid #e3e9f3;background:#fff;padding:0.35rem;"
                 />
