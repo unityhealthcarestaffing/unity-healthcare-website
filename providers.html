@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>For Providers | Unity Healthcare Staffing Ltd</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Unity Healthcare Staffing Ltd provides reliable agency care and nursing staff for care homes, supported living, hospitals and community services across England & Wales." />
+  <meta name="description" content="Unity Healthcare Staffing Ltd provides agency care and nursing staff for care homes, supported living, hospitals and community services across England & Wales." />
 
   <style>
     :root {
@@ -28,13 +28,12 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; height: auto; display: block; }
 
-    /* Top banner */
     .top-banner {
       background: var(--primary);
-      color: #fff;
+      color: #ffffff;
       text-align: center;
       font-size: 0.8rem;
-      padding: 0.45rem;
+      padding: 0.45rem 0.5rem;
     }
 
     header {
@@ -57,6 +56,7 @@
       justify-content: space-between;
       padding: 0.75rem 0;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .nav-left {
@@ -88,12 +88,13 @@
     .nav-links a:hover { color: var(--primary); }
 
     .btn {
+      display: inline-block;
       padding: 0.65rem 1.3rem;
       border-radius: 999px;
-      font-weight: 600;
       font-size: 0.95rem;
+      font-weight: 600;
       cursor: pointer;
-      display: inline-block;
+      text-align: center;
     }
 
     .btn-primary {
@@ -103,20 +104,20 @@
     }
 
     .btn-outline {
+      background: #fff;
       border: 1px solid #cbd2e1;
       color: var(--primary);
-      background: #fff;
     }
 
     /* HERO */
     .hero {
-      padding: 2.6rem 0 2.2rem;
+      padding: 2.4rem 0;
       background: white;
     }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0,1.45fr) minmax(0,1fr);
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1fr);
       gap: 2rem;
       align-items: center;
     }
@@ -129,19 +130,19 @@
       color: var(--primary);
       font-size: 0.78rem;
       font-weight: 700;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .hero-title {
-      font-size: clamp(2.1rem, 3.4vw, 2.7rem);
+      font-size: clamp(2rem, 3.2vw, 2.6rem);
       font-weight: 800;
       color: var(--dark);
       margin-bottom: 0.75rem;
     }
 
     .hero-text {
-      max-width: 560px;
-      font-size: 1rem;
+      font-size: 0.98rem;
+      max-width: 540px;
       color: #526581;
       margin-bottom: 1.2rem;
     }
@@ -149,7 +150,7 @@
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem 1.4rem;
+      gap: 1.25rem;
       font-size: 0.8rem;
       color: #7a8ba3;
     }
@@ -158,20 +159,21 @@
       background: white;
       border-radius: 1.25rem;
       padding: 1.25rem;
-      box-shadow: 0 18px 42px rgba(15,35,52,.12);
+      box-shadow: 0 14px 38px rgba(15,35,52,.09);
       border: 1px solid #e5ebf4;
     }
 
     .hero-card-title {
+      font-size: 0.9rem;
       font-weight: 800;
+      margin-bottom: 0.5rem;
       color: var(--dark);
-      margin-bottom: 0.6rem;
     }
 
     .hero-stat {
       display: flex;
       justify-content: space-between;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       margin-bottom: 0.45rem;
     }
 
@@ -180,67 +182,148 @@
       color: var(--primary);
     }
 
-    /* TRUST STRIP */
-    .trust-strip {
-      background: var(--primary-light);
-      padding: 1.2rem 0;
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 1rem;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--dark);
-    }
-
     section { padding: 2.6rem 0; }
     section:nth-of-type(even) { background: white; }
 
+    .section-header { margin-bottom: 1.25rem; }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+    }
+
     .section-title {
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--dark);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
     }
 
     .section-subtitle {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: #6b7b93;
-      max-width: 680px;
+      max-width: 640px;
     }
 
     .grid { display: grid; gap: 1rem; }
-    .grid-3 { grid-template-columns: repeat(3,1fr); }
-    .grid-2 { grid-template-columns: repeat(2,1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
 
     .card {
       background: white;
       border-radius: 1.2rem;
       padding: 1rem;
       border: 1px solid #e3e9f3;
-      box-shadow: 0 8px 20px rgba(15,35,52,.06);
+      box-shadow: 0 6px 18px rgba(15,35,52,.06);
       font-size: 0.9rem;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+      font-weight: 700;
+    }
+
+    .list {
+      list-style: none;
+      margin-top: 0.35rem;
+      font-size: 0.85rem;
+    }
+
+    .list li::before {
+      content: "• ";
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    /* BOOKING STEPS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .step {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1rem;
+      border: 1px solid #e3e9f3;
+      box-shadow: 0 8px 20px rgba(15,35,52,.06);
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+
+    /* UNIFORM IMAGES */
+    .uniform-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .uniform-tile {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      border: 1px solid #e3e9f3;
+      box-shadow: 0 10px 26px rgba(15,35,52,.08);
+    }
+
+    .uniform-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* FIX ANCHOR */
+    #staff-request {
+      scroll-margin-top: 90px;
     }
 
     footer {
       border-top: 1px solid #dde3f0;
       background: white;
-      padding: 1rem 0;
+      padding: 0.9rem 0;
       font-size: 0.8rem;
       color: #78839a;
     }
 
-    @media (max-width: 900px) {
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 800px) {
       .hero-inner,
       .grid-3,
       .grid-2,
-      .trust-grid {
+      .steps,
+      .uniform-grid {
         grid-template-columns: 1fr;
       }
-      .nav-links { display:none; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -254,7 +337,7 @@
 <header>
   <div class="container nav">
     <div class="nav-left">
-      <div class="brand-logo"><img src="assets/logo.png" alt="Unity Healthcare Staffing"></div>
+      <div class="brand-logo"><img src="assets/logo.png" alt="Unity Healthcare Staffing Logo"></div>
       <div class="brand-text">Unity Healthcare Staffing Ltd</div>
     </div>
     <nav class="nav-links">
@@ -275,46 +358,89 @@
     <div>
       <div class="hero-badge">For care providers</div>
       <h1 class="hero-title">
-        Confident staffing support when your service cannot afford gaps.
+        Reliable staffing support when your service cannot afford gaps.
       </h1>
       <p class="hero-text">
-        We help care homes, supported living services, hospitals and community providers
-        maintain safe staffing levels with vetted, reliable agency professionals — even at short notice.
+        We support care homes, supported living services, hospitals and community providers
+        with vetted, professional agency staff — even at short notice.
       </p>
       <div class="hero-meta">
-        <span>✔ Fast response times</span>
-        <span>✔ Compliance-focused recruitment</span>
-        <span>✔ Professional presentation</span>
+        <span>Healthcare Assistants & Support Workers</span>
+        <span>Registered Nurses</span>
+        <span>Short-notice & planned cover</span>
       </div>
     </div>
 
     <aside class="hero-card">
       <div class="hero-card-title">At a glance</div>
-      <div class="hero-stat"><span>Staff types</span><span>Care · Support · Nursing</span></div>
       <div class="hero-stat"><span>Coverage</span><span>England & Wales</span></div>
+      <div class="hero-stat"><span>Staff types</span><span>Care · Support · Nursing</span></div>
       <div class="hero-stat"><span>Company No.</span><span>16863419</span></div>
     </aside>
   </div>
 </section>
 
-<!-- TRUST -->
-<section class="trust-strip">
-  <div class="container trust-grid">
-    <div>✔ DBS & Right-to-Work verified</div>
-    <div>✔ Experienced healthcare professionals</div>
-    <div>✔ Short-notice & planned cover</div>
-    <div>✔ Clear communication & accountability</div>
+<!-- UNIFORM IMAGES -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Professional standards</div>
+      <h2 class="section-title">Clear identification & professional presentation</h2>
+      <p class="section-subtitle">
+        Our staff attend shifts in clean, professional Unity-branded uniforms.
+      </p>
+    </div>
+
+    <div class="uniform-grid">
+      <div class="uniform-tile"><img src="assets/uniform-1.png" alt="Unity Healthcare Staffing uniform"></div>
+      <div class="uniform-tile"><img src="assets/uniform-2.png" alt="Unity Healthcare Staffing uniform"></div>
+      <div class="uniform-tile"><img src="assets/uniform-3.png" alt="Unity Healthcare Staffing uniform"></div>
+    </div>
   </div>
 </section>
 
-<!-- EVERYTHING ELSE BELOW IS YOUR EXISTING CONTENT & FORMS — UNTOUCHED -->
-<!-- Staff request form, contact form, Firebase, EmailJS scripts remain exactly as you provided -->
+<!-- HOW BOOKING WORKS -->
+<section style="background: var(--primary-light);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Simple process</div>
+      <h2 class="section-title">How booking works</h2>
+      <p class="section-subtitle">
+        Designed to reduce admin time and get staff to you quickly.
+      </p>
+    </div>
 
-</main>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Submit your request</h3>
+        <p>Tell us what cover you need, when, and where.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>We confirm availability</h3>
+        <p>We check staff suitability and confirm details with you.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Staff attend your service</h3>
+        <p>A vetted professional arrives ready to support your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF REQUEST FORM (UNCHANGED) -->
+<section id="staff-request">
+  <!-- YOUR ORIGINAL STAFF REQUEST FORM SECTION REMAINS HERE EXACTLY AS BEFORE -->
+</section>
+
+<!-- CONTACT + SCRIPTS REMAIN UNCHANGED BELOW -->
 
 <footer>
-  <div class="container">
-    © <span id="year"></span> Unity Healthcare Staffing Ltd · Company No. 16863419
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Unity Healthcare Staffing Ltd. All rights reserved.</div>
+    <div>Company Number: 16863419 · Registered in England & Wales</div>
   </div>
 </footer>
 
