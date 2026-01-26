@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <title>For Healthcare Professionals | Unity Healthcare Staffing Ltd</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Join Unity Healthcare Staffing Ltd as a Healthcare Assistant, Support Worker or Registered Nurse and work flexible shifts across England & Wales."
-  />
+  <meta name="description" content="Join Unity Healthcare Staffing Ltd as a Healthcare Assistant, Support Worker or Registered Nurse and work flexible shifts across England & Wales." />
   <style>
     :root {
       --primary: #0b4f6c;
@@ -16,6 +13,7 @@
       --dark: #102a43;
       --text: #334e68;
       --bg: #f5f7fb;
+      --danger: #c0392b;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,7 +28,6 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; height: auto; display: block; }
 
-    /* Top banner MUST stay visible */
     .top-banner {
       background: var(--primary);
       color: #ffffff;
@@ -133,7 +130,13 @@
     }
     .btn-outline:hover { background: var(--primary-light); }
 
-    /* Small contact pill in header */
+    .btn:disabled{
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
     .header-contact {
       display: inline-flex;
       align-items: center;
@@ -150,7 +153,7 @@
     .header-contact a { color: var(--primary); font-weight: 900; }
     .header-contact a:hover { text-decoration: underline; }
 
-    /* HERO (banner style using existing assets/banner.png) */
+    /* HERO */
     .hero { padding: 2.25rem 0 1.25rem; }
 
     .hero-banner {
@@ -215,7 +218,6 @@
       letter-spacing: -0.02em;
       text-shadow: 0 10px 26px rgba(0,0,0,0.35);
     }
-
     .hero-title span { color: #d6fff9; }
 
     .hero-text {
@@ -242,88 +244,10 @@
       color: rgba(255,255,255,0.82);
     }
 
-    .hero-card {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(6px);
-      border-radius: 1.25rem;
-      padding: 1.05rem 1.05rem;
-      box-shadow: 0 14px 38px rgba(15, 35, 52, 0.12);
-      border: 1px solid rgba(229,235,244,0.9);
-    }
-
-    .hero-card-title {
-      font-size: 0.95rem;
-      font-weight: 900;
-      margin-bottom: 0.55rem;
-      color: var(--dark);
-    }
-
-    .hero-stat {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.75rem;
-      font-size: 0.84rem;
-      margin-bottom: 0.5rem;
-      color: #51627b;
-    }
-
-    .hero-stat span:last-child {
-      font-weight: 800;
-      color: var(--primary);
-      text-align: right;
-    }
-
-    .hero-mini-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.65rem;
-      margin-top: 0.85rem;
-    }
-
-    .hero-mini-tile {
-      border-radius: 0.95rem;
-      overflow: hidden;
-      border: 1px solid #e5ebf4;
-      background: #0b4f6c;
-      position: relative;
-      min-height: 92px;
-    }
-    .hero-mini-tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.03);
-      filter: saturate(1.02);
-    }
-    .hero-mini-tile::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);
-      pointer-events:none;
-    }
-    .hero-mini-label{
-      position:absolute;
-      left:0.55rem;
-      right:0.55rem;
-      bottom:0.55rem;
-      z-index:2;
-      color:#fff;
-      font-weight:800;
-      font-size:0.78rem;
-      text-shadow:0 10px 24px rgba(0,0,0,0.45);
-    }
-
-    /* How it works strip (3 steps) */
-    .how-strip {
-      background: linear-gradient(90deg, rgba(11,79,108,0.06), rgba(30,168,150,0.06));
-      border-top: 1px solid #e5ebf4;
-      border-bottom: 1px solid #e5ebf4;
-      padding: 1.35rem 0;
-    }
+    section { padding: 2.5rem 0; }
+    section:nth-of-type(odd) { background: white; }
 
     .section-header { margin-bottom: 1.1rem; text-align: left; }
-
     .section-kicker {
       font-size: 0.78rem;
       text-transform: uppercase;
@@ -332,69 +256,20 @@
       margin-bottom: 0.25rem;
       font-weight: 800;
     }
-
     .section-title {
       font-size: 1.55rem;
       font-weight: 900;
       color: var(--dark);
       margin-bottom: 0.25rem;
     }
-
     .section-subtitle {
       font-size: 0.94rem;
       color: #6b7b93;
       max-width: 720px;
     }
 
-    .how-inner {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      align-items: stretch;
-    }
-
-    .how-step {
-      background: white;
-      border: 1px solid #e3e9f3;
-      border-radius: 1.15rem;
-      padding: 0.95rem 0.95rem;
-      box-shadow: 0 10px 22px rgba(15, 35, 52, 0.05);
-      display:flex;
-      gap:0.75rem;
-      align-items:flex-start;
-    }
-
-    .how-num {
-      width: 38px;
-      height: 38px;
-      border-radius: 0.95rem;
-      background: var(--primary);
-      color: #fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight: 900;
-      flex: 0 0 auto;
-      box-shadow: 0 10px 18px rgba(11, 79, 108, 0.18);
-    }
-
-    .how-step h4{
-      font-size: 1rem;
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 0.15rem;
-    }
-    .how-step p{
-      font-size: 0.9rem;
-      color: #566a84;
-    }
-
-    section { padding: 2.5rem 0; }
-    section:nth-of-type(odd) { background: white; }
-
     .grid { display: grid; gap: 1rem; }
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     .card {
       background: white;
@@ -423,67 +298,9 @@
       font-weight: 800;
     }
 
-    .list {
-      list-style: none;
-      margin-top: 0.4rem;
-      font-size: 0.9rem;
-    }
-    .list li::before {
-      content: "• ";
-      color: var(--accent);
-      font-weight: 900;
-    }
+    .list { list-style: none; margin-top: 0.4rem; font-size: 0.9rem; }
+    .list li::before { content: "• "; color: var(--accent); font-weight: 900; }
 
-    /* Tiles (gallery) */
-    .tile {
-      position: relative;
-      border-radius: 1.2rem;
-      overflow: hidden;
-      border: 1px solid #e3e9f3;
-      box-shadow: 0 10px 26px rgba(15, 35, 52, 0.08);
-      min-height: 220px;
-      background: #0b4f6c;
-    }
-
-    .tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      transform: scale(1.03);
-    }
-
-    .tile::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.55) 100%);
-      pointer-events: none;
-    }
-
-    .tile-content {
-      position: absolute;
-      left: 1rem;
-      right: 1rem;
-      bottom: 1rem;
-      z-index: 2;
-      color: #fff;
-      text-shadow: 0 10px 26px rgba(0,0,0,0.45);
-    }
-
-    .tile-title {
-      font-size: 1.2rem;
-      font-weight: 900;
-      margin-bottom: 0.15rem;
-    }
-
-    .tile-sub {
-      font-size: 0.92rem;
-      opacity: 0.92;
-      max-width: 95%;
-    }
-
-    /* Form */
     form {
       background: white;
       border-radius: 1.2rem;
@@ -514,9 +331,7 @@
 
     textarea { min-height: 90px; resize: vertical; }
 
-    input:focus,
-    textarea:focus,
-    select:focus {
+    input:focus, textarea:focus, select:focus {
       outline: 2px solid rgba(11, 79, 108, 0.28);
       border-color: var(--primary);
       background: #fff;
@@ -525,10 +340,10 @@
     .form-message {
       font-size: 0.82rem;
       margin-top: 0.5rem;
+      white-space: pre-wrap;
     }
-
-    .form-message.success { color: #1ea896; }
-    .form-message.error { color: #c0392b; }
+    .form-message.success { color: var(--accent); font-weight: 700; }
+    .form-message.error { color: var(--danger); font-weight: 700; }
 
     footer {
       border-top: 1px solid #dde3f0;
@@ -560,12 +375,10 @@
     }
 
     @media (max-width: 800px) {
-      .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); }
+      .grid-2 { grid-template-columns: minmax(0, 1fr); }
       .nav-links { display: none; }
       .hero-inner { padding: 1.6rem 1.15rem; }
       .header-contact { width: 100%; justify-content: center; }
-      .how-inner { grid-template-columns: minmax(0, 1fr); }
-      .hero-mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
@@ -589,14 +402,7 @@
         <a href="providers.html">For Providers</a>
         <a href="staff.html" aria-current="page">For Staff</a>
         <a href="#contact">Contact</a>
-        <a
-          href="https://app.unityhealthcarestaffing.co.uk"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-outline"
-        >
-          Open App
-        </a>
+        <a href="https://app.unityhealthcarestaffing.co.uk" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Open App</a>
       </nav>
 
       <div class="header-contact" aria-label="Contact phone and email">
@@ -606,13 +412,7 @@
         <a href="mailto:info@unityhealthcarestaffing.co.uk"><strong>Email</strong></a>
       </div>
 
-      <a
-        href="#professionals"
-        class="btn btn-primary"
-      >
-        Apply / Register
-      </a>
-
+      <a href="#professionals" class="btn btn-primary">Apply / Register</a>
       <a href="policies.html">Policies</a>
     </div>
   </header>
@@ -652,91 +452,38 @@
               </div>
             </div>
 
-            <aside class="hero-card" aria-label="At a glance">
-              <div class="hero-card-title">At a glance</div>
-              <div class="hero-stat">
-                <span>Roles</span>
-                <span>HCA · Support · Nurse</span>
-              </div>
-              <div class="hero-stat">
-                <span>Settings</span>
-                <span>Care homes · Supported living</span>
-              </div>
-              <div class="hero-stat">
-                <span>Coverage</span>
-                <span>England & Wales</span>
-              </div>
-              <div class="hero-stat">
-                <span>Company number</span>
-                <span>16863419</span>
+            <aside class="card" style="background:rgba(255,255,255,0.92); border:1px solid rgba(229,235,244,0.9); box-shadow:0 14px 38px rgba(15,35,52,0.12);">
+              <div class="pill">At a glance</div>
+              <h3 style="margin-top:0.2rem;">Work settings</h3>
+              <p style="color:#566a84; margin-top:0.25rem;">
+                Care homes, supported living, hospitals & community settings.
+              </p>
+
+              <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:0.65rem; margin-top:0.85rem;">
+                <div style="border-radius:0.95rem; overflow:hidden; border:1px solid #e5ebf4; background:#0b4f6c; position:relative; min-height:92px;">
+                  <img src="assets/carehomes.png" alt="Care home setting" style="width:100%; height:100%; object-fit:cover; transform:scale(1.03);" />
+                  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);"></div>
+                  <div style="position:absolute; left:0.55rem; right:0.55rem; bottom:0.55rem; z-index:2; color:#fff; font-weight:800; font-size:0.78rem; text-shadow:0 10px 24px rgba(0,0,0,0.45);">Care homes</div>
+                </div>
+
+                <div style="border-radius:0.95rem; overflow:hidden; border:1px solid #e5ebf4; background:#0b4f6c; position:relative; min-height:92px;">
+                  <img src="assets/supported.png" alt="Supported living setting" style="width:100%; height:100%; object-fit:cover; transform:scale(1.03);" />
+                  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);"></div>
+                  <div style="position:absolute; left:0.55rem; right:0.55rem; bottom:0.55rem; z-index:2; color:#fff; font-weight:800; font-size:0.78rem; text-shadow:0 10px 24px rgba(0,0,0,0.45);">Supported living</div>
+                </div>
+
+                <div style="border-radius:0.95rem; overflow:hidden; border:1px solid #e5ebf4; background:#0b4f6c; position:relative; min-height:92px;">
+                  <img src="assets/community.png" alt="Hospitals and community setting" style="width:100%; height:100%; object-fit:cover; transform:scale(1.03);" />
+                  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);"></div>
+                  <div style="position:absolute; left:0.55rem; right:0.55rem; bottom:0.55rem; z-index:2; color:#fff; font-weight:800; font-size:0.78rem; text-shadow:0 10px 24px rgba(0,0,0,0.45);">Hospitals</div>
+                </div>
               </div>
 
-              <!-- Use existing images (no missing assets) -->
-              <div class="hero-mini-grid" aria-label="Work settings">
-                <div class="hero-mini-tile">
-                  <img src="assets/carehomes.png" alt="Care home setting" />
-                  <div class="hero-mini-label">Care homes</div>
-                </div>
-                <div class="hero-mini-tile">
-                  <img src="assets/supported.png" alt="Supported living setting" />
-                  <div class="hero-mini-label">Supported living</div>
-                </div>
-                <div class="hero-mini-tile">
-                  <img src="assets/community.png" alt="Hospital and community setting" />
-                  <div class="hero-mini-label">Hospitals & community</div>
-                </div>
-              </div>
+              <p style="margin-top:0.85rem; font-size:0.82rem; color:#5a6f89;">
+                Company Number: <b style="color:var(--dark);">16863419</b>
+              </p>
             </aside>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS (3 steps) -->
-    <section class="how-strip" aria-label="How joining works">
-      <div class="container">
-        <div class="section-header" style="margin-bottom:0.85rem;">
-          <div class="section-kicker">How it works</div>
-          <h2 class="section-title">3 steps to start working</h2>
-          <p class="section-subtitle">
-            Quick registration, safe checks, then you can start taking suitable shifts.
-          </p>
-        </div>
-
-        <div class="how-inner">
-          <div class="how-step">
-            <div class="how-num">1</div>
-            <div>
-              <h4>Register your interest</h4>
-              <p>Complete the form with your role, experience and availability.</p>
-            </div>
-          </div>
-
-          <div class="how-step">
-            <div class="how-num">2</div>
-            <div>
-              <h4>Complete compliance checks</h4>
-              <p>ID, right to work, references, DBS and required training/skills.</p>
-            </div>
-          </div>
-
-          <div class="how-step">
-            <div class="how-num">3</div>
-            <div>
-              <h4>Start taking shifts</h4>
-              <p>We match you to opportunities that fit your skills and schedule.</p>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="#professionals">Apply now</a>
-          <a
-            class="btn btn-outline"
-            href="mailto:info@unityhealthcarestaffing.co.uk?subject=Staff%20Enquiry&body=Hello%20Unity%20Healthcare%20Staffing%20Ltd%2C%0A%0AI%20have%20a%20question%20about%20joining%20your%20staff%20bank.%0A%0AName%3A%0ARole%3A%0AQuestion%3A%0A%0AThank%20you."
-          >
-            Ask a question by email
-          </a>
         </div>
       </div>
     </section>
@@ -748,9 +495,8 @@
           <div class="section-kicker">Apply now</div>
           <h2 class="section-title">Register your interest</h2>
           <p class="section-subtitle">
-            Complete this form to tell us about your experience, availability and the type of roles
-            you are looking for. We will review your information and contact you if we have suitable
-            opportunities.
+            Complete this form to tell us about your experience, availability and the type of roles you are looking for.
+            We will review your information and contact you if we have suitable opportunities.
           </p>
         </div>
 
@@ -800,15 +546,16 @@
               <textarea id="staffAvailability" name="availability" placeholder="Days, nights, weekends, full-time, part-time..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width:100%;">Submit registration</button>
+            <button id="submitBtn" type="submit" class="btn btn-primary" style="width:100%;">Submit registration</button>
             <p id="staffFormMessage" class="form-message"></p>
 
             <p style="margin-top:0.6rem; font-size:0.82rem; color:#6b7b93;">
-              Prefer email? Write to <a href="mailto:info@unityhealthcarestaffing.co.uk" style="color:var(--primary); font-weight:800;">info@unityhealthcarestaffing.co.uk</a>.
+              If the form ever fails, email us at
+              <a href="mailto:info@unityhealthcarestaffing.co.uk" style="color:var(--primary); font-weight:800;">info@unityhealthcarestaffing.co.uk</a>.
             </p>
           </form>
 
-          <div class="card">
+          <div class="card" id="contact">
             <span class="pill">What you get</span>
             <h3>What we offer</h3>
             <ul class="list">
@@ -833,7 +580,7 @@
               </div>
             </div>
 
-            <div id="contact" style="margin-top:1rem;">
+            <div style="margin-top:1rem;">
               <span class="pill">Contact</span>
               <p style="margin-top:0.4rem;">
                 <b>Phone:</b> <a href="tel:+447542123984" style="color:var(--primary); font-weight:800;">+44 7542 123 984</a><br/>
@@ -842,6 +589,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
   </main>
@@ -866,22 +614,51 @@
         <div class="footer-line"><a href="providers.html">For Providers</a></div>
         <div class="footer-line"><a href="staff.html">For Staff</a></div>
         <div class="footer-line"><a href="policies.html">Policies</a></div>
-        <div class="footer-line">
-          <a href="https://app.unityhealthcarestaffing.co.uk" target="_blank" rel="noopener noreferrer">Open App</a>
-        </div>
+        <div class="footer-line"><a href="https://app.unityhealthcarestaffing.co.uk" target="_blank" rel="noopener noreferrer">Open App</a></div>
       </div>
     </div>
   </footer>
 
-  <!-- EmailJS (for email notifications) -->
+  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // Your real EmailJS public key
-    emailjs.init("mMnrdgI8GnIyrpAqA");
+    // EmailJS init (safe)
+    try {
+      emailjs.init("mMnrdgI8GnIyrpAqA");
+    } catch (e) {
+      console.warn("EmailJS init failed:", e);
+    }
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
   <!-- Firebase + Firestore + EmailJS integration -->
   <script type="module">
+    const staffForm = document.getElementById("staffForm");
+    const staffFormMessage = document.getElementById("staffFormMessage");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function setMsg(text, type) {
+      staffFormMessage.textContent = text || "";
+      staffFormMessage.className = "form-message" + (type ? " " + type : "");
+    }
+
+    function setSubmitting(isSubmitting) {
+      if (!submitBtn) return;
+      submitBtn.disabled = !!isSubmitting;
+      submitBtn.textContent = isSubmitting ? "Submitting..." : "Submit registration";
+    }
+
+    // Quick check: if opened as file://, module imports often fail
+    if (location.protocol === "file:") {
+      setMsg(
+        "This page is opened as a local file (file://). The form may not submit.\n" +
+        "Please open via your live website or run a local server (e.g. VS Code Live Server).",
+        "error"
+      );
+    }
+
     const firebaseConfig = {
       apiKey: "AIzaSyBe6amsLWa7o-Hp2Zwvn0dpjxfQ9ldbUUU",
       authDomain: "unity-healthcare-staffing.firebaseapp.com",
@@ -892,97 +669,140 @@
       measurementId: "G-J5L3RT870C"
     };
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+    let addDoc, collection, serverTimestamp, db;
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    try {
+      const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js");
+      const firestore = await import("https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js");
 
-    // Staff application form
-    const staffForm = document.getElementById("staffForm");
-    const staffFormMessage = document.getElementById("staffFormMessage");
+      addDoc = firestore.addDoc;
+      collection = firestore.collection;
+      serverTimestamp = firestore.serverTimestamp;
+
+      const app = initializeApp(firebaseConfig);
+      db = firestore.getFirestore(app);
+    } catch (importErr) {
+      console.error("Firebase import/init error:", importErr);
+      setMsg(
+        "Form script failed to load. Please refresh the page.\n" +
+        "If this continues, it may be blocked by your browser/network.\n\n" +
+        "Error: " + (importErr?.message || importErr),
+        "error"
+      );
+    }
 
     if (staffForm) {
       staffForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        staffFormMessage.textContent = "";
-        staffFormMessage.className = "form-message";
+
+        if (!db || !addDoc) {
+          setMsg(
+            "The form cannot submit because Firebase did not load.\n" +
+            "Please refresh, or email us at info@unityhealthcarestaffing.co.uk.",
+            "error"
+          );
+          return;
+        }
+
+        setMsg("", "");
+        setSubmitting(true);
 
         const formData = new FormData(staffForm);
         const payload = {
-          name: formData.get("name"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          role: formData.get("role"),
-          experienceYears: formData.get("experienceYears"),
-          settings: formData.get("settings"),
-          dbsStatus: formData.get("dbsStatus"),
-          availability: formData.get("availability"),
+          name: (formData.get("name") || "").toString().trim(),
+          email: (formData.get("email") || "").toString().trim(),
+          phone: (formData.get("phone") || "").toString().trim(),
+          role: (formData.get("role") || "").toString().trim(),
+          experienceYears: (formData.get("experienceYears") || "").toString().trim(),
+          settings: (formData.get("settings") || "").toString().trim(),
+          dbsStatus: (formData.get("dbsStatus") || "").toString().trim(),
+          availability: (formData.get("availability") || "").toString().trim(),
+          source: "staff.html",
           createdAt: serverTimestamp()
         };
 
         try {
-          // 1) Save to Firestore
           await addDoc(collection(db, "staffApplications"), payload);
 
-          // 2) Notify by EmailJS (best effort)
+          // EmailJS best effort (do not fail submission if EmailJS fails)
           try {
-            const staffMessageText = `
-New Staff Application
-
-Name: ${payload.name}
-Email: ${payload.email}
-Phone: ${payload.phone}
-Role: ${payload.role}
-Experience (years): ${payload.experienceYears || "-"}
-
-Experience settings:
-${payload.settings || "-"}
-
-DBS status:
-${payload.dbsStatus || "-"}
-
-Availability:
-${payload.availability || "-"}
-            `;
-
-            await emailjs.send(
-              "service_5k6rvri",
-              "template_36yproc",
-              {
-                name: payload.name,
-                email: payload.email,
-                phone: payload.phone,
-                role: payload.role,
-                experience_years: payload.experienceYears || "-",
-                settings: payload.settings || "-",
-                dbs_status: payload.dbsStatus || "-",
-                availability: payload.availability || "-",
-                message: staffMessageText,
-                time: new Date().toLocaleString()
-              }
-            );
-            console.log("EmailJS: staff application email sent");
-          } catch (emailError) {
-            console.error("EmailJS error (staff application):", emailError);
+            if (window.emailjs && typeof window.emailjs.send === "function") {
+              await window.emailjs.send(
+                "service_5k6rvri",
+                "template_36yproc",
+                {
+                  name: payload.name,
+                  email: payload.email,
+                  phone: payload.phone,
+                  role: payload.role,
+                  experience_years: payload.experienceYears || "-",
+                  settings: payload.settings || "-",
+                  dbs_status: payload.dbsStatus || "-",
+                  availability: payload.availability || "-",
+                  message: "New staff interest registration received.",
+                  time: new Date().toLocaleString()
+                }
+              );
+            } else {
+              console.warn("EmailJS not available, skipped email send.");
+            }
+          } catch (emailErr) {
+            console.warn("EmailJS send failed:", emailErr);
           }
 
-          // 3) UI feedback
           staffForm.reset();
-          staffFormMessage.textContent =
-            "Thank you – your registration has been received. We will contact you if your profile matches our current opportunities.";
-          staffFormMessage.classList.add("success");
-        } catch (error) {
-          console.error("Error saving staff application:", error);
-          staffFormMessage.textContent =
-            "Sorry, something went wrong. Please try again or email us directly at info@unityhealthcarestaffing.co.uk.";
-          staffFormMessage.classList.add("error");
+          setMsg(
+            "Thank you – your registration has been received.\nWe will contact you if your profile matches our current opportunities.",
+            "success"
+          );
+        } catch (err) {
+          console.error("Firestore submit error:", err);
+
+          // Useful message for rules errors
+          const msg =
+            (err && err.code ? `Code: ${err.code}\n` : "") +
+            (err && err.message ? `Message: ${err.message}\n\n` : "") +
+            "If this persists, please email us at info@unityhealthcarestaffing.co.uk.";
+
+          setMsg("Sorry, the form could not submit.\n" + msg, "error");
+
+          // Optional mailto fallback prefilled
+          const mailto = `mailto:info@unityhealthcarestaffing.co.uk?subject=Staff%20Registration%20(Form%20Error)&body=` +
+            encodeURIComponent(
+              `Hello Unity Healthcare Staffing Ltd,\n\n` +
+              `My form submission failed. Here are my details:\n\n` +
+              `Name: ${payload.name}\n` +
+              `Email: ${payload.email}\n` +
+              `Phone: ${payload.phone}\n` +
+              `Role: ${payload.role}\n` +
+              `Experience (years): ${payload.experienceYears || "-"}\n\n` +
+              `Settings:\n${payload.settings || "-"}\n\n` +
+              `DBS: ${payload.dbsStatus || "-"}\n\n` +
+              `Availability:\n${payload.availability || "-"}\n\n` +
+              `Thank you.`
+            );
+
+          // Show a clickable fallback link
+          setMsg(
+            "Sorry, the form could not submit.\n\n" +
+            msg +
+            "\n\nClick here to email your details instead:\n" +
+            mailto,
+            "error"
+          );
+
+          // Make it clickable if browser auto-detect doesn't
+          staffFormMessage.innerHTML =
+            `<span>Sorry, the form could not submit.</span><br/><br/>` +
+            `<b>Debug:</b><br/>` +
+            `<pre style="margin-top:0.35rem; font-weight:700; color:var(--danger); white-space:pre-wrap;">${msg.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</pre>` +
+            `<a href="${mailto}" style="color:var(--primary); font-weight:900; text-decoration:underline; text-underline-offset:3px;">Email your details instead</a>`;
+          staffFormMessage.className = "form-message error";
+        } finally {
+          setSubmitting(false);
         }
       });
     }
-
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
 </body>
