@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reference Form | Unity Healthcare Staffing Ltd</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+:root{
+--primary:#0b4f6c;
+--accent:#1ea896;
+--dark:#102a43;
+--text:#334e68;
+--bg:#f5f7fb;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+}
+
+.container{
+max-width:720px;
+margin:0 auto;
+padding:2rem 1.25rem;
+}
+
+.card{
+background:#fff;
+border-radius:1.4rem;
+padding:1.6rem;
+border:1px solid #e3e9f3;
+box-shadow:0 10px 26px rgba(15,35,52,.08);
+}
+
+h1{
+color:var(--dark);
+font-size:1.7rem;
+margin-bottom:.4rem;
+}
+
+.subtitle{
+font-size:.9rem;
+color:#6b7b93;
+margin-bottom:1.4rem;
+}
+
+.field{margin-bottom:.9rem}
+
+label{
+font-size:.78rem;
+display:block;
+margin-bottom:.25rem;
+color:#627089;
+}
+
+input,textarea,select{
+width:100%;
+padding:.6rem .7rem;
+border-radius:.7rem;
+border:1px solid #ccd4e4;
+font:inherit;
+background:#f9fbff;
+}
+
+textarea{min-height:90px}
+
+input:focus,textarea:focus,select:focus{
+outline:2px solid rgba(11,79,108,.25);
+border-color:var(--primary);
+background:#fff;
+}
+
+button{
+background:var(--primary);
+color:#fff;
+border:none;
+padding:.75rem 1.5rem;
+border-radius:999px;
+font-weight:600;
+cursor:pointer;
+width:100%;
+margin-top:.6rem;
+box-shadow:0 8px 18px rgba(11,79,108,.22);
+}
+
+button:hover{background:#093b50}
+
+.message{
+margin-top:.7rem;
+font-size:.85rem;
+}
+
+.success{color:var(--accent)}
+.error{color:#c0392b}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="card">
+    <h1>Professional Reference Form</h1>
+    <p class="subtitle">
+      Thank you for supporting an application with Unity Healthcare Staffing Ltd.
+      Please complete the short form below.
+    </p>
+
+    <form id="referenceForm">
+
+      <div class="field">
+        <label>Applicant name</label>
+        <input name="applicant" required>
+      </div>
+
+      <div class="field">
+        <label>Your full name</label>
+        <input name="refereeName" required>
+      </div>
+
+      <div class="field">
+        <label>Your role & organisation</label>
+        <input name="refereeRole" required>
+      </div>
+
+      <div class="field">
+        <label>Email address</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="field">
+        <label>How long did you work with the applicant?</label>
+        <input name="duration">
+      </div>
+
+      <div class="field">
+        <label>Describe their duties & performance</label>
+        <textarea name="performance"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Reliability & professionalism</label>
+        <textarea name="reliability"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Any safeguarding concerns?</label>
+        <select name="safeguarding">
+          <option value="No">No</option>
+          <option value="Yes">Yes (please explain below)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Additional comments</label>
+        <textarea name="comments"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Would you re-employ this person?</label>
+        <select name="reemploy" required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit Reference</button>
+      <p id="formMessage" class="message"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+const form = document.getElementById("referenceForm");
+const msg = document.getElementById("formMessage");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  msg.textContent = "Thank you — your reference has been submitted.";
+  msg.className = "message success";
+  form.reset();
+
+  // Optional: connect to Firebase / email later if you want automation
+});
+</script>
+
+</body>
+</html>
